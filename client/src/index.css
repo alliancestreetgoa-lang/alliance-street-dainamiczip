@@ -86,18 +86,22 @@
     @apply font-sans antialiased text-foreground;
     background: linear-gradient(
       180deg,
-      #050001 0%,
-      #1a0208 8%,
-      #2d050e 16%,
-      #4a0a18 25%,
-      #6b1020 35%,
-      #8b1a2a 45%,
-      #b02030 55%,
-      #cc2e3a 65%,
-      #d94455 75%,
-      #e06878 85%,
-      #e8919b 92%,
-      #f0b8bf 100%
+      #020001 0%,
+      #0a0103 4%,
+      #150306 10%,
+      #25060c 16%,
+      #3a0912 23%,
+      #50101a 30%,
+      #6e1522 38%,
+      #8c1c2c 46%,
+      #a82436 54%,
+      #c43040 62%,
+      #d84550 70%,
+      #e46070 78%,
+      #ec8490 85%,
+      #f2a8b2 91%,
+      #f7cdd3 96%,
+      #fce8eb 100%
     );
     background-attachment: fixed;
     min-height: 100vh;
