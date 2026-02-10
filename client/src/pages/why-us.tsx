@@ -17,7 +17,7 @@ export default function WhyUs() {
         </div>
       </div>
 
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="container px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
             <div>
@@ -69,20 +69,20 @@ export default function WhyUs() {
         <div className="container px-6 text-center">
             <h2 className="text-3xl font-serif font-bold text-primary mb-12">Our Commitment to You</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               <div className="bg-white p-8 shadow-sm">
+               <div className="bg-white text-black p-8 shadow-sm">
                  <div className="text-accent text-4xl font-serif font-bold mb-4">100%</div>
-                 <h3 className="font-bold text-primary mb-2">Data Security</h3>
-                 <p className="text-muted-foreground text-sm">Enterprise-grade security protocols to protect your sensitive financial data.</p>
+                 <h3 className="font-bold text-black mb-2">Data Security</h3>
+                 <p className="text-gray-600 text-sm">Enterprise-grade security protocols to protect your sensitive financial data.</p>
                </div>
-               <div className="bg-white p-8 shadow-sm">
+               <div className="bg-white text-black p-8 shadow-sm">
                  <div className="text-accent text-4xl font-serif font-bold mb-4">24/7</div>
-                 <h3 className="font-bold text-primary mb-2">Operational Uptime</h3>
-                 <p className="text-muted-foreground text-sm">Reliable support and systems ensuring your business never stops.</p>
+                 <h3 className="font-bold text-black mb-2">Operational Uptime</h3>
+                 <p className="text-gray-600 text-sm">Reliable support and systems ensuring your business never stops.</p>
                </div>
-               <div className="bg-white p-8 shadow-sm">
+               <div className="bg-white text-black p-8 shadow-sm">
                  <div className="text-accent text-4xl font-serif font-bold mb-4">ROI</div>
-                 <h3 className="font-bold text-primary mb-2">Focused</h3>
-                 <p className="text-muted-foreground text-sm">Our services are designed to pay for themselves through efficiency and cost savings.</p>
+                 <h3 className="font-bold text-black mb-2">Focused</h3>
+                 <p className="text-gray-600 text-sm">Our services are designed to pay for themselves through efficiency and cost savings.</p>
                </div>
             </div>
         </div>

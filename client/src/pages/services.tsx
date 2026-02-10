@@ -61,7 +61,7 @@ export default function Services() {
         </div>
       </div>
 
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="container px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (

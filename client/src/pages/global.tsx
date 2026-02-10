@@ -24,7 +24,7 @@ export default function Global() {
         </div>
       </div>
 
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden">
         {/* Abstract Map Background */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
            <svg className="w-full h-full" viewBox="0 0 100 50">
@@ -41,14 +41,14 @@ export default function Global() {
         <div className="container px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regions.map((region, i) => (
-              <div key={i} className="group bg-muted/30 p-8 rounded-sm border border-transparent hover:border-accent hover:bg-white hover:shadow-lg transition-all duration-300">
+              <div key={i} className="group bg-muted/30 p-8 rounded-sm border border-transparent hover:border-accent hover:bg-white hover:text-black transition-all duration-300">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-primary/10 p-3 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
+                  <div className="bg-white/10 p-3 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
                     <MapPin className="w-6 h-6 text-primary group-hover:text-white" />
                   </div>
-                  <h3 className="text-xl font-serif font-bold text-primary">{region.name}</h3>
+                  <h3 className="text-xl font-serif font-bold text-primary group-hover:text-black">{region.name}</h3>
                 </div>
-                <p className="text-muted-foreground">{region.desc}</p>
+                <p className="text-muted-foreground group-hover:text-gray-600">{region.desc}</p>
               </div>
             ))}
           </div>

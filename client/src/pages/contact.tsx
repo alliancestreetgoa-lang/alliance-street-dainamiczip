@@ -16,11 +16,11 @@ export default function Contact() {
         </div>
       </div>
 
-      <section className="py-24 bg-white -mt-12 relative z-10">
+      <section className="py-24 -mt-12 relative z-10">
         <div className="container px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div className="bg-white rounded-sm shadow-xl p-8 md:p-12 border border-gray-100">
-              <h2 className="text-2xl font-serif font-bold text-primary mb-8">Send us a message</h2>
+            <div className="bg-white text-black rounded-sm shadow-xl p-8 md:p-12 border border-gray-100">
+              <h2 className="text-2xl font-serif font-bold text-black mb-8">Send us a message</h2>
               <ContactForm />
             </div>
 

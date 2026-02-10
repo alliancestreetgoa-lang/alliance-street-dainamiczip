@@ -60,7 +60,7 @@ export default function Home() {
       </section>
 
       {/* Value Proposition */}
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="container px-6">
           <motion.div 
             {...fadeInUp}
@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* Why Us Section */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-24 overflow-hidden">
         <div className="container px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <motion.div 
@@ -226,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* Global Coverage */}
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="container px-6 text-center">
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-12">Global Coverage</h2>
           

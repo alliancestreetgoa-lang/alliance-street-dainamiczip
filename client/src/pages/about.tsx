@@ -17,7 +17,7 @@ export default function About() {
         </div>
       </div>
 
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="container px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
@@ -43,28 +43,28 @@ export default function About() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-sm shadow-sm border border-gray-100">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <div className="bg-white text-black p-8 rounded-sm shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-6">
                 <Target className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold font-serif text-primary mb-3">Precision</h3>
-              <p className="text-muted-foreground">Accuracy is non-negotiable. We adhere to strict quality control standards to ensure your data is always correct.</p>
+              <h3 className="text-xl font-bold font-serif text-black mb-3">Precision</h3>
+              <p className="text-gray-600">Accuracy is non-negotiable. We adhere to strict quality control standards to ensure your data is always correct.</p>
             </div>
             
-            <div className="bg-white p-8 rounded-sm shadow-sm border border-gray-100">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <div className="bg-white text-black p-8 rounded-sm shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-6">
                 <Users className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold font-serif text-primary mb-3">Partnership</h3>
-              <p className="text-muted-foreground">We view ourselves as an extension of your team, deeply invested in your long-term success.</p>
+              <h3 className="text-xl font-bold font-serif text-black mb-3">Partnership</h3>
+              <p className="text-gray-600">We view ourselves as an extension of your team, deeply invested in your long-term success.</p>
             </div>
 
-            <div className="bg-white p-8 rounded-sm shadow-sm border border-gray-100">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+            <div className="bg-white text-black p-8 rounded-sm shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-6">
                 <Trophy className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold font-serif text-primary mb-3">Excellence</h3>
-              <p className="text-muted-foreground">We constantly upskill our team and optimize our processes to deliver world-class service.</p>
+              <h3 className="text-xl font-bold font-serif text-black mb-3">Excellence</h3>
+              <p className="text-gray-600">We constantly upskill our team and optimize our processes to deliver world-class service.</p>
             </div>
           </div>
         </div>
