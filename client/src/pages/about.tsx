@@ -55,33 +55,27 @@ export default function About() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <motion.div 
-            className="relative overflow-hidden rounded-3xl"
+            className="card-float p-10 md:p-16"
             variants={scaleIn}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            <div className="absolute inset-0 z-0">
-              <img src="/images/mission-bg.png" alt="" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-black/70" />
-            </div>
-            <div className="relative z-10 p-10 md:p-16">
-              <motion.div 
-                className="space-y-6 max-w-3xl mx-auto text-center"
-                variants={stagger}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-white">Our Mission</motion.h2>
-                <motion.p variants={fadeUp} className="text-white/70 leading-relaxed text-lg">
-                  At Alliance Street Accounting, our mission is to empower businesses globally with the financial clarity and operational efficiency they need to scale. We believe that high-quality financial management should be accessible, transparent, and driven by expertise.
-                </motion.p>
-                <motion.p variants={fadeUp} className="text-white/70 leading-relaxed text-lg">
-                  We combine the cost advantages of global outsourcing with the strategic insight of a top-tier CFO, giving you the best of both worlds.
-                </motion.p>
-              </motion.div>
-            </div>
+            <motion.div 
+              className="space-y-6 max-w-3xl mx-auto text-center"
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-black">Our Mission</motion.h2>
+              <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed text-lg">
+                At Alliance Street Accounting, our mission is to empower businesses globally with the financial clarity and operational efficiency they need to scale. We believe that high-quality financial management should be accessible, transparent, and driven by expertise.
+              </motion.p>
+              <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed text-lg">
+                We combine the cost advantages of global outsourcing with the strategic insight of a top-tier CFO, giving you the best of both worlds.
+              </motion.p>
+            </motion.div>
           </motion.div>
         </div>
       </section>
