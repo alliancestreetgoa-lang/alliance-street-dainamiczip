@@ -16,12 +16,12 @@ const fadeUp = {
 
 export default function Global() {
   const regions = [
-    { name: "United States", desc: "Serving clients across all 50 states with GAAP compliant accounting." },
-    { name: "United Kingdom", desc: "Expertise in HMRC regulations, VAT returns, and UK corporate tax." },
-    { name: "European Union", desc: "Navigating cross-border VAT and country-specific compliance requirements." },
-    { name: "UAE", desc: "Specialized support for Free Zone and Mainland companies, including Corporate Tax." },
-    { name: "Canada", desc: "Handling CRA compliance, GST/HST filing, and Canadian payroll." },
-    { name: "India", desc: "Cost-effective delivery centers with deep expertise in global accounting standards." },
+    { name: "United States", desc: "Serving clients across all 50 states with GAAP compliant accounting.", image: "/images/region-us.png" },
+    { name: "United Kingdom", desc: "Expertise in HMRC regulations, VAT returns, and UK corporate tax.", image: "/images/region-uk.png" },
+    { name: "European Union", desc: "Navigating cross-border VAT and country-specific compliance requirements.", image: "/images/region-eu.png" },
+    { name: "UAE", desc: "Specialized support for Free Zone and Mainland companies, including Corporate Tax.", image: "/images/region-uae.png" },
+    { name: "Canada", desc: "Handling CRA compliance, GST/HST filing, and Canadian payroll.", image: "/images/region-canada.png" },
+    { name: "India", desc: "Cost-effective delivery centers with deep expertise in global accounting standards.", image: "/images/region-india.png" },
   ];
 
   return (
@@ -56,21 +56,27 @@ export default function Global() {
             {regions.map((region, i) => (
               <motion.div 
                 key={i} 
-                className="group bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white hover:text-black hover:border-transparent hover:shadow-2xl transition-colors duration-300"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 min-h-[280px] flex flex-col justify-end cursor-pointer"
                 variants={fadeUp}
                 whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <motion.div 
-                    className="bg-red-500/10 p-3 rounded-xl group-hover:bg-red-50 transition-colors"
-                    whileHover={{ rotate: 10, scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <MapPin className="w-5 h-5 text-red-500" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-black transition-colors">{region.name}</h3>
+                <div className="absolute inset-0 z-0">
+                  <img src={region.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
                 </div>
-                <p className="text-white/50 group-hover:text-gray-500 transition-colors">{region.desc}</p>
+                <div className="relative z-10 p-8">
+                  <div className="flex items-center gap-4 mb-4">
+                    <motion.div 
+                      className="bg-red-500/20 backdrop-blur-sm p-3 rounded-xl border border-red-500/20"
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <MapPin className="w-5 h-5 text-red-500" />
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-white">{region.name}</h3>
+                  </div>
+                  <p className="text-white/60">{region.desc}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
