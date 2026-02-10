@@ -83,11 +83,24 @@
     @apply border-border;
   }
   body {
-    @apply font-sans antialiased bg-background text-foreground;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -5%, hsla(0, 85%, 45%, 0.5) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 100% 10%, hsla(0, 70%, 40%, 0.2) 0%, transparent 50%);
+    @apply font-sans antialiased text-foreground;
+    background: linear-gradient(
+      180deg,
+      #050001 0%,
+      #1a0208 8%,
+      #2d050e 16%,
+      #4a0a18 25%,
+      #6b1020 35%,
+      #8b1a2a 45%,
+      #b02030 55%,
+      #cc2e3a 65%,
+      #d94455 75%,
+      #e06878 85%,
+      #e8919b 92%,
+      #f0b8bf 100%
+    );
     background-attachment: fixed;
+    min-height: 100vh;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif tracking-tight;
