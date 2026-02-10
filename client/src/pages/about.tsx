@@ -78,7 +78,7 @@ export default function About() {
                 </motion.p>
               </motion.div>
               <motion.div 
-                className="rounded-2xl overflow-hidden"
+                className="rounded-2xl overflow-hidden min-h-[300px] md:min-h-[400px]"
                 variants={fadeRight}
                 initial="hidden"
                 whileInView="visible"
@@ -87,7 +87,7 @@ export default function About() {
                 <motion.img 
                   src="/images/hero-building.png" 
                   alt="Our Office" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover min-h-[300px] md:min-h-[400px]"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                 />
