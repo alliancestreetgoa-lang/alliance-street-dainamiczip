@@ -240,7 +240,7 @@ export default function Home() {
               >
                 <div className="rounded-2xl overflow-hidden">
                   <motion.img 
-                    src="/images/team-meeting.jpg" 
+                    src="/images/team-meeting.png" 
                     alt="Alliance Street Team" 
                     className="w-full h-auto object-cover"
                     whileHover={{ scale: 1.05 }}
