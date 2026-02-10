@@ -6,7 +6,7 @@ import { Link } from "wouter";
 export default function Services() {
   const services = [
     { title: "Accounting & Bookkeeping Services", description: "Scalable accounting and bookkeeping solutions that bring structure, clarity, and consistency to your financial operations—so leadership can focus on growth.", icon: Calculator },
-    { title: "Virtual CFO", description: "Strategic financial guidance to help you navigate growth. Includes cash flow management, budgeting, financial modeling, and board-level reporting.", icon: BarChart3 },
+    { title: "Virtual CFO", description: "Turn your financial data into a clear strategic roadmap with our flexible Virtual CFO services. We provide the executive insight you need to scale with confidence and maximize ROI.", icon: BarChart3 },
     { title: "Tax Compliance", description: "Navigating the complexities of local and international tax laws. We assist with filing, planning, and ensuring full compliance to minimize risk.", icon: ShieldCheck },
     { title: "Financial Analysis", description: "Deep dive into your numbers to uncover trends, opportunities, and risks. We turn data into actionable business intelligence.", icon: Briefcase }
   ];

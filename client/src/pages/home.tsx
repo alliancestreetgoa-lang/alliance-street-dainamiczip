@@ -119,7 +119,7 @@ export default function Home() {
             />
             <ServiceCard 
               title="Virtual CFO Services" 
-              description="Strategic financial leadership, forecasting, and advisory without the cost of a full-time executive."
+              description="Turn your financial data into a clear strategic roadmap with our flexible Virtual CFO services. We provide the executive insight you need to scale with confidence and maximize ROI."
               icon={BarChart3}
             />
             <ServiceCard 
