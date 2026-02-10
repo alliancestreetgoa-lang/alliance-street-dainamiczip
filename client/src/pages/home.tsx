@@ -18,13 +18,13 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section - alliancestreet.ae style */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32">
+      <section className="relative min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-5xl"
+            className="max-w-5xl mx-auto flex flex-col items-center text-center"
           >
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8">
