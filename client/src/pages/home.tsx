@@ -225,9 +225,9 @@ export default function Home() {
           <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Global Coverage</p>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-12">Trusted Worldwide</h2>
           
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {["United States", "United Kingdom", "European Union", "UAE", "Canada", "India"].map((country) => (
-              <div key={country} className="bg-white/5 border border-white/10 px-8 py-4 rounded-full hover:bg-white hover:text-black hover:border-transparent hover:shadow-lg transition-all cursor-default group">
+              <div key={country} className="bg-white/5 border border-white/10 px-8 py-4 rounded-full hover:bg-white hover:text-black hover:border-transparent hover:shadow-lg transition-all cursor-default group text-center">
                 <span className="font-bold text-white/80 group-hover:text-black">{country}</span>
               </div>
             ))}
