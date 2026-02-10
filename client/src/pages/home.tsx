@@ -113,24 +113,48 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ServiceCard 
-              title="Accounting & Bookkeeping Services" 
-              description="Scalable accounting and bookkeeping solutions that bring structure, clarity, and consistency to your financial operations—so leadership can focus on growth."
+              title="Accounting & Bookkeeping" 
+              description="Scalable solutions that bring structure, clarity, and consistency to your financial operations."
               icon={Calculator}
+              image="/images/service-accounting.png"
+              details={{
+                overview: "Our accounting and bookkeeping services are designed for modern businesses that need reliable, accurate, and timely financial records.",
+                features: ["Full-cycle bookkeeping including accounts payable and receivable", "Monthly, quarterly, and annual financial statement preparation", "Bank and credit card reconciliation", "Multi-currency accounting for international operations", "Cloud-based accounting setup (QuickBooks, Xero, Zoho)", "Dedicated account manager for ongoing support"],
+                benefits: "Accurate books are the foundation of every smart business decision. Our services eliminate financial blind spots and give you real-time clarity into cash flow and profitability."
+              }}
             />
             <ServiceCard 
               title="Virtual CFO Services" 
-              description="Turn your financial data into a clear strategic roadmap with our flexible Virtual CFO services. We provide the executive insight you need to scale with confidence and maximize ROI."
+              description="Turn your financial data into a clear strategic roadmap with executive-level insight."
               icon={BarChart3}
+              image="/images/service-cfo.png"
+              details={{
+                overview: "Get the strategic financial leadership of a CFO without the full-time cost. High-level financial strategy tailored to your business stage.",
+                features: ["Financial planning, budgeting, and forecasting", "Cash flow management and optimization", "KPI dashboards and executive reporting", "Fundraising support — pitch decks and financial models", "Board and investor reporting packages", "Strategic guidance on mergers and exits"],
+                benefits: "A Virtual CFO bridges the gap between where your business is today and where you want it to be, helping you make data-driven decisions and scale sustainably."
+              }}
             />
             <ServiceCard 
               title="Tax Filing & Compliance" 
               description="Expert handling of tax obligations across multiple jurisdictions to ensure full compliance."
               icon={ShieldCheck}
+              image="/images/service-tax.png"
+              details={{
+                overview: "Our tax compliance team ensures your business meets all filing deadlines, stays fully compliant, and takes advantage of every available deduction.",
+                features: ["Corporate and individual tax return preparation", "Sales tax, VAT, and GST registration and filing", "International tax planning and transfer pricing", "Year-end tax planning and optimization", "Audit support and representation", "Compliance monitoring for regulatory changes"],
+                benefits: "Tax compliance protects your business from penalties while optimizing your tax position. We keep you compliant and reduce your tax burden."
+              }}
             />
             <ServiceCard 
               title="Financial Analysis" 
               description="Deep dive into your numbers to uncover trends, opportunities, and risks."
               icon={TrendingUp}
+              image="/images/service-analysis.png"
+              details={{
+                overview: "We transform raw data into powerful insights that drive smarter business decisions, going beyond standard reporting to uncover the stories behind your numbers.",
+                features: ["Profitability analysis by product and customer segment", "Variance analysis comparing actuals to forecasts", "Financial modeling for growth scenarios", "Competitor benchmarking and industry comparison", "Custom dashboards with real-time visualization", "Monthly management reports with recommendations"],
+                benefits: "Our financial analysis gives you data-backed clarity to allocate resources wisely, identify profitable opportunities, and proactively manage risks."
+              }}
             />
           </div>
         </div>
