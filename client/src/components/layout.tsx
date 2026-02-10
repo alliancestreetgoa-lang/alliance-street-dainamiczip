@@ -3,7 +3,7 @@ import React from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, Globe, Phone, Mail, MapPin } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
@@ -18,13 +18,13 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Updated links based on the image
   const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/why-us", label: "Why Us" },
-    { href: "/global", label: "Global Coverage" },
-    { href: "/contact", label: "Contact" },
+    { href: "/business-setup", label: "Business Setup" },
+    { href: "/banking", label: "Banking Solutions" },
+    { href: "/accounting", label: "Accounting Service" },
+    { href: "/financial", label: "Financial Solutions" },
+    { href: "/real-estate", label: "Real Estate" },
   ];
 
   return (
@@ -32,45 +32,43 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-4 border-b border-gray-100"
+          ? "bg-black/80 backdrop-blur-md shadow-sm py-3"
           : "bg-transparent py-6"
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/">
-          <div className="cursor-pointer">
+          <div className="cursor-pointer flex items-center gap-2">
             <img 
               src="/images/logo.png" 
               alt="Alliance Street Accounting" 
-              className="h-14 md:h-16 w-auto object-contain"
+              className="h-10 md:h-12 w-auto object-contain brightness-0 invert" 
             />
           </div>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8">
+        {/* Desktop Menu - Pill Style */}
+        <div className="hidden lg:flex items-center gap-2">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               <a
                 className={cn(
-                  "text-sm font-medium transition-colors relative hover:text-accent",
-                  location === link.href 
-                    ? "text-accent" 
-                    : isScrolled ? "text-primary" : "text-white/90 hover:text-white"
+                  "nav-pill",
+                  location === link.href ? "active" : ""
                 )}
               >
                 {link.label}
               </a>
             </Link>
           ))}
-          <Link href="/contact">
+        </div>
+
+        <div className="hidden lg:flex">
+           <Link href="/contact">
             <Button 
-              className={cn(
-                "rounded-none px-6 font-medium transition-all hover:scale-105",
-                isScrolled ? "bg-primary text-white hover:bg-primary/90" : "bg-white text-primary hover:bg-white/90"
-              )}
+              className="rounded-full bg-white text-black hover:bg-white/90 font-medium px-6"
             >
-              Book Strategy Call
+              Get in Touch
             </Button>
           </Link>
         </div>
@@ -79,22 +77,22 @@ export function Navbar() {
         <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={isScrolled ? "text-primary" : "text-white"}>
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent>
-              <div className="flex flex-col gap-6 mt-10">
+            <SheetContent className="bg-black/95 border-gray-800 text-white">
+              <div className="flex flex-col gap-4 mt-10">
                 {links.map((link) => (
                   <Link key={link.href} href={link.href}>
-                    <a className={cn("text-lg font-serif font-medium hover:text-accent transition-colors", location === link.href ? "text-accent" : "text-primary")}>
+                    <a className={cn("text-lg font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-colors", location === link.href ? "text-accent bg-white/5" : "text-white")}>
                       {link.label}
                     </a>
                   </Link>
                 ))}
                 <div className="mt-4">
                   <Link href="/contact">
-                    <Button className="w-full rounded-none">Book Strategy Call</Button>
+                    <Button className="w-full rounded-full bg-white text-black hover:bg-white/90">Get in Touch</Button>
                   </Link>
                 </div>
               </div>
@@ -108,49 +106,47 @@ export function Navbar() {
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-white pt-20 pb-10">
+    <footer className="bg-black text-white pt-20 pb-10 border-t border-white/10">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
             <div className="mb-6 bg-white p-2 w-fit rounded-sm">
               <img src="/images/logo.png" alt="Alliance Street Accounting" className="h-12 w-auto" />
             </div>
-            <p className="text-white/70 text-sm leading-relaxed mb-6">
+            <p className="text-white/60 text-sm leading-relaxed mb-6">
               Global accounting and virtual CFO services built for growing businesses. We provide the financial clarity and operational backbone you need to scale.
             </p>
             <div className="flex gap-4">
-              {/* Social placeholders */}
-              <div className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-accent transition-colors cursor-pointer">
+              <div className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-full hover:bg-accent transition-colors cursor-pointer">
                 <Globe className="h-5 w-5" />
               </div>
             </div>
           </div>
           
           <div>
-            <h4 className="font-serif text-lg mb-6 text-accent">Services</h4>
-            <ul className="space-y-3 text-sm text-white/70">
-              <li className="hover:text-white cursor-pointer transition-colors">Accounting & Bookkeeping</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Virtual CFO</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Tax Compliance</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Back-Office Support</li>
-              <li className="hover:text-white cursor-pointer transition-colors">Financial Reporting</li>
+            <h4 className="font-medium text-lg mb-6 text-white">Services</h4>
+            <ul className="space-y-3 text-sm text-white/60">
+              <li className="hover:text-white cursor-pointer transition-colors">Business Setup</li>
+              <li className="hover:text-white cursor-pointer transition-colors">Banking Solutions</li>
+              <li className="hover:text-white cursor-pointer transition-colors">Accounting Services</li>
+              <li className="hover:text-white cursor-pointer transition-colors">Financial Solutions</li>
+              <li className="hover:text-white cursor-pointer transition-colors">Real Estate</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-serif text-lg mb-6 text-accent">Company</h4>
-            <ul className="space-y-3 text-sm text-white/70">
+            <h4 className="font-medium text-lg mb-6 text-white">Company</h4>
+            <ul className="space-y-3 text-sm text-white/60">
               <li className="hover:text-white cursor-pointer transition-colors"><Link href="/about">About Us</Link></li>
               <li className="hover:text-white cursor-pointer transition-colors"><Link href="/why-us">Why Alliance Street</Link></li>
               <li className="hover:text-white cursor-pointer transition-colors"><Link href="/global">Global Coverage</Link></li>
               <li className="hover:text-white cursor-pointer transition-colors"><Link href="/contact">Contact</Link></li>
-              <li className="hover:text-white cursor-pointer transition-colors">Careers</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-serif text-lg mb-6 text-accent">Contact</h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <h4 className="font-medium text-lg mb-6 text-white">Contact</h4>
+            <ul className="space-y-4 text-sm text-white/60">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 shrink-0 text-accent" />
                 <span>Serving US, UK, EU, UAE, Canada, India</span>
