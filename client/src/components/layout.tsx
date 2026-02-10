@@ -89,7 +89,7 @@ export function Navbar() {
             <img 
               src="/images/logo.png" 
               alt="Alliance Street Accounting" 
-              className="h-24 md:h-28 w-auto object-contain"
+              className="h-48 md:h-56 w-auto object-contain"
             />
           </motion.div>
         </Link>
