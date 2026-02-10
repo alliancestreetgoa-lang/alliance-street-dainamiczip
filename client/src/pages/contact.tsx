@@ -50,7 +50,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-sm">Call Us</h4>
-                      <a href="tel:+15551234567" className="text-white/60 hover:text-white transition-colors">+1 (555) 123-4567</a>
+                      <a href="tel:+917375096163" className="text-white/60 hover:text-white transition-colors">+91 7375096163</a>
                       <p className="text-xs text-white/40 mt-1">Mon-Fri, 9am - 6pm EST</p>
                     </div>
                   </div>
