@@ -89,7 +89,7 @@ export function Navbar() {
             <img 
               src="/images/logo.png" 
               alt="Alliance Street Accounting" 
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-24 md:h-28 w-auto object-contain"
             />
           </motion.div>
         </Link>
@@ -124,7 +124,7 @@ export function Navbar() {
             <SheetContent className="bg-black border-white/10">
               <div className="flex flex-col gap-4 mt-10">
                 <div className="mb-4">
-                  <img src="/images/logo.png" alt="Alliance Street" className="h-12 w-auto" />
+                  <img src="/images/logo.png" alt="Alliance Street" className="h-24 w-auto" />
                 </div>
                 {navLinks.map((link, i) => (
                   <motion.div
@@ -203,7 +203,7 @@ export function Footer() {
         >
           <motion.div className="col-span-1" variants={footerFadeUp}>
             <div className="mb-6">
-              <img src="/images/logo.png" alt="Alliance Street Accounting" className="h-14 w-auto" />
+              <img src="/images/logo.png" alt="Alliance Street Accounting" className="h-28 w-auto" />
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
               Global accounting and virtual CFO services built for growing businesses. We provide the financial clarity and operational backbone you need to scale.
