@@ -54,7 +54,7 @@ export default function WhyUs() {
       </section>
 
       <section className="py-20">
-        <div className="container px-6 text-center">
+        <div className="container mx-auto px-6 text-center">
           <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Our Commitment</p>
           <h2 className="text-3xl font-extrabold text-white mb-12">Built on Trust</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
