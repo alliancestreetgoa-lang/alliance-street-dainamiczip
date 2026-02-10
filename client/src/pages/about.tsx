@@ -146,10 +146,10 @@ export default function About() {
             </motion.h2>
             <Link href="/contact">
               <motion.button 
-                className="bg-white text-black rounded-full px-10 py-4 font-bold text-lg hover:bg-gray-100 transition-colors"
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="relative bg-white text-black rounded-full px-12 py-5 font-bold text-lg shadow-[0_6px_0_0_rgba(200,200,200,1),0_8px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_4px_0_0_rgba(200,200,200,1),0_6px_16px_rgba(0,0,0,0.3)] active:shadow-[0_1px_0_0_rgba(200,200,200,1),0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-100"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98, y: 4 }}
+                transition={{ type: "spring", stiffness: 500, damping: 20 }}
               >
                 Get in Touch
               </motion.button>
