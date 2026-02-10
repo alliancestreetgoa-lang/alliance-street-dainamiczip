@@ -7,105 +7,111 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
     transition: { duration: 0.6 }
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-          style={{ backgroundImage: 'url("/images/hero-building.jpg")' }}
-        >
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-primary/80 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
-        </div>
-
-        <div className="container relative z-10 px-6 pt-20">
+      {/* Hero Section - alliancestreet.ae style */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32">
+        <div className="container px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl"
+            className="max-w-5xl"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-              Global Accounting & <br/>
-              <span className="text-accent">Virtual CFO Services</span> <br/>
-              Built for Growing Businesses
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8">
+              <span className="text-sm text-white/70">Global Accounting & Outsourcing Firm</span>
+              <ArrowRight className="w-3.5 h-3.5 text-red-500" />
+            </div>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight" data-testid="hero-heading">
+              Global Accounting &{" "}
+              <span className="text-red-500">Virtual CFO</span> Services Built for Growing Businesses
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl font-light leading-relaxed">
-              Experience the clarity of global outsourcing with a local touch. We act as your long-term financial partners, providing scalable support from bookkeeping to strategic CFO insights.
+
+            <p className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl leading-relaxed">
+              At Alliance Street, we provide the financial clarity and operational backbone you need to scale — from bookkeeping to strategic CFO insights.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
-                <Button size="lg" className="bg-accent text-primary hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-none font-semibold shadow-lg shadow-black/20 transition-all">
-                  Book a Strategy Call
-                </Button>
+                <button className="btn-dark text-base" data-testid="hero-cta-primary">
+                  Let's talk
+                </button>
               </Link>
               <Link href="/services">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 rounded-none backdrop-blur-sm transition-all">
-                  Explore Services
-                </Button>
+                <button className="btn-outline-dark text-base flex items-center gap-2" data-testid="hero-cta-secondary">
+                  Our solutions
+                  <ArrowRight className="w-4 h-4 text-red-500" />
+                </button>
               </Link>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mission Statement - floating white card */}
+      <section className="py-20">
+        <div className="container px-6">
+          <motion.div {...fadeInUp} className="card-float p-12 md:p-16 max-w-5xl mx-auto">
+            <p className="text-2xl md:text-4xl font-bold text-black leading-snug">
+              Our mission is to{" "}
+              <span className="text-red-500">help businesses</span>{" "}
+              earn more and keep what they deserve —{" "}
+              <span className="text-gray-400">which is everything.</span>
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* Value Proposition */}
-      <section className="py-24">
+      <section className="py-20">
         <div className="container px-6">
           <motion.div 
             {...fadeInUp}
-            className="grid grid-cols-1 md:grid-cols-3 gap-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            <div className="space-y-4">
-              <div className="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center text-primary mb-6">
-                <Globe2 className="w-7 h-7" />
+            {[
+              { icon: Globe2, title: "Global Delivery, Local Understanding", desc: "We bridge the gap between cost-effective global delivery and the nuance of local compliance and business culture across US, UK, EU, and UAE." },
+              { icon: TrendingUp, title: "Beyond Bookkeeping", desc: "We don't just record history; we help shape your future. Our Virtual CFO services provide the actionable insights you need to drive growth." },
+              { icon: ShieldCheck, title: "Scalable Finance Support", desc: "From startup to enterprise, our SOP-driven processes scale with you. We become a seamless extension of your internal team." }
+            ].map((item, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all">
+                <div className="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-5">
+                  <item.icon className="w-6 h-6 text-red-500" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-white/50 leading-relaxed">{item.desc}</p>
               </div>
-              <h3 className="text-xl font-bold font-serif text-primary">Global Delivery, Local Understanding</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                We bridge the gap between cost-effective global delivery and the nuance of local compliance and business culture across US, UK, EU, and UAE.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center text-primary mb-6">
-                <TrendingUp className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold font-serif text-primary">Beyond Bookkeeping</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                We don't just record history; we help shape your future. Our Virtual CFO services provide the actionable insights you need to drive growth.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center text-primary mb-6">
-                <ShieldCheck className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold font-serif text-primary">Scalable Finance Support</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                From startup to enterprise, our SOP-driven processes scale with you. We become a seamless extension of your internal team.
-              </p>
-            </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* Services Preview */}
-      <section className="py-24 bg-muted/50">
+      <section className="py-20">
         <div className="container px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6">Comprehensive Financial Solutions</h2>
-            <p className="text-muted-foreground text-lg">Everything you need to manage, optimize, and grow your business finances.</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Our Solutions</p>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white">Solutions designed to meet your needs.</h2>
+            </div>
+            <Link href="/services">
+              <button className="btn-outline-dark text-sm flex items-center gap-2">
+                View All <ArrowRight className="w-4 h-4 text-red-500" />
+              </button>
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ServiceCard 
               title="Accounting Services" 
               description="Full-cycle accounting management ensuring accuracy and timeliness in your financial records."
@@ -137,75 +143,63 @@ export default function Home() {
               icon={FileText}
             />
           </div>
-          
-          <div className="mt-12 text-center">
-            <Link href="/services">
-              <Button variant="link" className="text-primary font-medium text-lg hover:text-accent">
-                View All Services <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Why Us Section */}
-      <section className="py-24 overflow-hidden">
+      {/* Why Us Section - with image */}
+      <section className="py-20 overflow-hidden">
         <div className="container px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <motion.div 
-              {...fadeInUp}
-              className="lg:w-1/2 relative"
-            >
-              <div className="relative z-10 rounded-sm overflow-hidden shadow-2xl">
-                <img src="/images/team-meeting.jpg" alt="Alliance Street Team" className="w-full h-auto object-cover" />
+          <div className="card-float p-10 md:p-16">
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              <div className="lg:w-1/2 relative">
+                <div className="rounded-2xl overflow-hidden">
+                  <img src="/images/team-meeting.jpg" alt="Alliance Street Team" className="w-full h-auto object-cover" />
+                </div>
               </div>
-              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-accent/10 -z-0 rounded-full blur-3xl" />
-              <div className="absolute -top-10 -left-10 w-64 h-64 bg-primary/10 -z-0 rounded-full blur-3xl" />
-            </motion.div>
-            
-            <div className="lg:w-1/2 space-y-8">
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary">Why Partner with <br/>Alliance Street?</h2>
-              <p className="text-lg text-muted-foreground">
-                We believe in building long-term partnerships, not just transactional vendor relationships. Our approach is rooted in process excellence and deep financial expertise.
-              </p>
               
-              <ul className="space-y-4">
-                {[
-                  "Global outsourcing done right with seamless communication",
-                  "Strict SOP-driven, process-based delivery models",
-                  "Expertise up to Virtual CFO level for strategic guidance",
-                  "Extension of your client finance teams",
-                  "Scalable solutions that grow with your business"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-accent shrink-0" />
-                    <span className="text-foreground/80 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <Link href="/why-us">
-                <Button className="bg-primary text-white rounded-none px-8 py-6 mt-4 hover:bg-primary/90">
-                  Discover Our Approach
-                </Button>
-              </Link>
+              <div className="lg:w-1/2 space-y-6">
+                <p className="text-red-500 font-semibold text-sm uppercase tracking-wider">Why Choose Us</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-black">Why Partner with Alliance Street?</h2>
+                <p className="text-gray-500 leading-relaxed">
+                  We believe in building long-term partnerships, not just transactional vendor relationships.
+                </p>
+                
+                <ul className="space-y-4">
+                  {[
+                    "Global outsourcing done right with seamless communication",
+                    "Strict SOP-driven, process-based delivery models",
+                    "Expertise up to Virtual CFO level for strategic guidance",
+                    "Extension of your client finance teams",
+                    "Scalable solutions that grow with your business"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                      <span className="text-gray-700 font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <Link href="/why-us">
+                  <button className="btn-dark mt-4">
+                    Discover Our Approach
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How We Work - Process */}
-      <section className="py-24 bg-primary text-white">
+      {/* Process Section */}
+      <section className="py-20">
         <div className="container px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Our Engagement Process</h2>
-            <p className="text-white/70 max-w-2xl mx-auto">Simple, transparent, and effective. We onboard quickly so you can see value immediately.</p>
+            <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Our Process</p>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">The Battleplan</h2>
+            <p className="text-white/50 max-w-2xl mx-auto">Simple, transparent, and effective. We onboard quickly so you can see value immediately.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-white/20 -z-0 transform -translate-y-1/2" />
-
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {[
               { step: "01", title: "Understand", desc: "We analyze your business needs and pain points." },
               { step: "02", title: "Design", desc: "We create a custom service model for you." },
@@ -213,12 +207,12 @@ export default function Home() {
               { step: "04", title: "Deliver", desc: "Regular reporting and consistent execution." },
               { step: "05", title: "Optimize", desc: "Ongoing advisory and process improvement." }
             ].map((item, i) => (
-              <div key={i} className="relative z-10 flex flex-col items-center text-center group">
-                <div className="w-24 h-24 bg-primary border-4 border-accent rounded-full flex items-center justify-center text-2xl font-bold font-serif mb-6 group-hover:bg-accent group-hover:text-primary transition-colors shadow-xl">
+              <div key={i} className="text-center group">
+                <div className="w-16 h-16 mx-auto bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-xl font-extrabold text-red-500 mb-5 group-hover:bg-red-500 group-hover:text-white group-hover:border-red-500 transition-all">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-white/70 text-sm px-4">{item.desc}</p>
+                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-white/40 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -226,38 +220,36 @@ export default function Home() {
       </section>
 
       {/* Global Coverage */}
-      <section className="py-24">
+      <section className="py-20">
         <div className="container px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-12">Global Coverage</h2>
+          <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Global Coverage</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-12">Trusted Worldwide</h2>
           
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
             {["United States", "United Kingdom", "European Union", "UAE", "Canada", "India"].map((country) => (
-              <div key={country} className="bg-muted px-8 py-4 rounded-sm border border-transparent hover:border-accent hover:bg-white hover:shadow-lg transition-all cursor-default">
-                <span className="font-serif font-bold text-lg text-primary">{country}</span>
+              <div key={country} className="bg-white/5 border border-white/10 px-8 py-4 rounded-full hover:bg-white hover:text-black hover:border-transparent hover:shadow-lg transition-all cursor-default group">
+                <span className="font-bold text-white/80 group-hover:text-black">{country}</span>
               </div>
             ))}
           </div>
-          
-          <p className="mt-12 text-muted-foreground max-w-2xl mx-auto">
-            Our team understands the specific regulatory and business environments of these key markets, ensuring compliant and relevant financial management wherever you operate.
-          </p>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-20">
         <div className="container px-6">
-          <div className="bg-primary rounded-sm p-12 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">Ready to Streamline Your Finances?</h2>
-              <p className="text-white/80 text-lg mb-10">
+          <div className="relative overflow-hidden rounded-3xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-500 to-red-700" />
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
+            <div className="relative z-10 p-12 md:p-20 text-center">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">Ready to Streamline Your Finances?</h2>
+              <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
                 Schedule a free strategy call to discuss how we can support your growth and optimize your financial operations.
               </p>
               <Link href="/contact">
-                <Button size="lg" className="bg-accent text-primary hover:bg-white hover:text-primary text-lg px-10 py-7 rounded-none font-semibold shadow-lg">
+                <button className="bg-white text-black rounded-full px-10 py-4 font-bold text-lg hover:bg-gray-100 transition-all shadow-lg" data-testid="cta-book-call">
                   Book a Strategy Call
-                </Button>
+                </button>
               </Link>
             </div>
           </div>

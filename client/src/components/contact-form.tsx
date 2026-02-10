@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,27 +30,48 @@ export function ContactForm() {
     },
   });
 
+  const mutation = useMutation({
+    mutationFn: async (values: z.infer<typeof formSchema>) => {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) throw new Error("Failed to submit");
+      return res.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Request Sent",
+        description: "We'll be in touch with you shortly to schedule your strategy call.",
+      });
+      form.reset();
+    },
+    onError: () => {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email us directly.",
+        variant: "destructive",
+      });
+    },
+  });
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Request Sent",
-      description: "We'll be in touch with you shortly to schedule your strategy call.",
-    });
-    form.reset();
+    mutation.mutate(values);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel className="text-gray-700 font-medium">Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} className="bg-white" />
+                  <Input placeholder="John Doe" {...field} className="bg-gray-50 border-gray-200 text-black rounded-xl" data-testid="input-name" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -60,9 +82,9 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Work Email</FormLabel>
+                <FormLabel className="text-gray-700 font-medium">Work Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="john@company.com" {...field} className="bg-white" />
+                  <Input placeholder="john@company.com" {...field} className="bg-gray-50 border-gray-200 text-black rounded-xl" data-testid="input-email" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -75,9 +97,9 @@ export function ContactForm() {
           name="company"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Company Name</FormLabel>
+              <FormLabel className="text-gray-700 font-medium">Company Name</FormLabel>
               <FormControl>
-                <Input placeholder="Acme Inc." {...field} className="bg-white" />
+                <Input placeholder="Acme Inc." {...field} className="bg-gray-50 border-gray-200 text-black rounded-xl" data-testid="input-company" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -89,10 +111,10 @@ export function ContactForm() {
           name="service"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Service Interest</FormLabel>
+              <FormLabel className="text-gray-700 font-medium">Service Interest</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger className="bg-white">
+                  <SelectTrigger className="bg-gray-50 border-gray-200 text-black rounded-xl" data-testid="select-service">
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                 </FormControl>
@@ -114,12 +136,13 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message (Optional)</FormLabel>
+              <FormLabel className="text-gray-700 font-medium">Message (Optional)</FormLabel>
               <FormControl>
                 <Textarea 
                   placeholder="Tell us about your business needs..." 
-                  className="min-h-[120px] bg-white" 
-                  {...field} 
+                  className="min-h-[120px] bg-gray-50 border-gray-200 text-black rounded-xl" 
+                  {...field}
+                  data-testid="textarea-message"
                 />
               </FormControl>
               <FormMessage />
@@ -127,9 +150,14 @@ export function ContactForm() {
           )}
         />
 
-        <Button type="submit" className="w-full md:w-auto px-8 py-6 text-lg rounded-none">
-          Book Strategy Call
-        </Button>
+        <button 
+          type="submit" 
+          className="btn-dark w-full md:w-auto"
+          disabled={mutation.isPending}
+          data-testid="button-submit"
+        >
+          {mutation.isPending ? "Sending..." : "Book Strategy Call"}
+        </button>
       </form>
     </Form>
   );
