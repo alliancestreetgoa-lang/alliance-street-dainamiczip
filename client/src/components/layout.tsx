@@ -180,21 +180,37 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   );
 }
 
+const footerStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } }
+};
+
+const footerFadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } }
+};
+
 export function Footer() {
   return (
     <footer className="bg-black border-t border-white/5 pt-20 pb-10">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16"
+          variants={footerStagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          <motion.div className="col-span-1" variants={footerFadeUp}>
             <div className="mb-6">
               <img src="/images/logo.png" alt="Alliance Street Accounting" className="h-14 w-auto" />
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
               Global accounting and virtual CFO services built for growing businesses. We provide the financial clarity and operational backbone you need to scale.
             </p>
-          </div>
+          </motion.div>
           
-          <div>
+          <motion.div variants={footerFadeUp}>
             <h4 className="font-bold text-sm uppercase tracking-wider text-white/40 mb-6">Services</h4>
             <ul className="space-y-3 text-sm text-white/60">
               <li><Link href="/services" className="hover:text-white transition-colors cursor-pointer">Accounting & Bookkeeping</Link></li>
@@ -203,9 +219,9 @@ export function Footer() {
               <li><Link href="/services" className="hover:text-white transition-colors cursor-pointer">Back-Office Support</Link></li>
               <li><Link href="/services" className="hover:text-white transition-colors cursor-pointer">Financial Reporting</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={footerFadeUp}>
             <h4 className="font-bold text-sm uppercase tracking-wider text-white/40 mb-6">Company</h4>
             <ul className="space-y-3 text-sm text-white/60">
               <li><Link href="/about" className="hover:text-white transition-colors cursor-pointer">About Us</Link></li>
@@ -213,9 +229,9 @@ export function Footer() {
               <li><Link href="/global" className="hover:text-white transition-colors cursor-pointer">Global Coverage</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors cursor-pointer">Contact</Link></li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={footerFadeUp}>
             <h4 className="font-bold text-sm uppercase tracking-wider text-white/40 mb-6">Contact</h4>
             <ul className="space-y-4 text-sm text-white/60">
               <li className="flex items-start gap-3">
@@ -231,16 +247,22 @@ export function Footer() {
                 <a href="tel:+917375096163" className="hover:text-white transition-colors">+91 7375096163</a>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+        <motion.div 
+          className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <p>&copy; {new Date().getFullYear()} Alliance Street Accounting. All rights reserved.</p>
           <div className="flex gap-6">
             <span className="cursor-pointer hover:text-white/60 transition-colors">Privacy Policy</span>
             <span className="cursor-pointer hover:text-white/60 transition-colors">Terms of Service</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

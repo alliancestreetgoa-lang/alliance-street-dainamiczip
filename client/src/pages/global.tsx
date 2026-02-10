@@ -1,5 +1,18 @@
 import { Navbar, Footer } from "@/components/layout";
 import { MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } }
+};
+
+const ease = [0.25, 0.46, 0.45, 0.94] as [number, number, number, number];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } }
+};
 
 export default function Global() {
   const regions = [
@@ -17,29 +30,50 @@ export default function Global() {
       
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">
-          <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Global Coverage</p>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">Wherever You Do Business</h1>
-          <p className="text-xl text-white/50 max-w-2xl">
-            We have the expertise to keep you compliant and efficient.
-          </p>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.p variants={fadeUp} className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Global Coverage</motion.p>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6">Wherever You Do Business</motion.h1>
+            <motion.p variants={fadeUp} className="text-xl text-white/50 max-w-2xl">
+              We have the expertise to keep you compliant and efficient.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
       <section className="py-10 pb-20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
             {regions.map((region, i) => (
-              <div key={i} className="group bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white hover:text-black hover:border-transparent hover:shadow-2xl transition-all duration-300">
+              <motion.div 
+                key={i} 
+                className="group bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white hover:text-black hover:border-transparent hover:shadow-2xl transition-colors duration-300"
+                variants={fadeUp}
+                whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+              >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-red-500/10 p-3 rounded-xl group-hover:bg-red-50 transition-colors">
+                  <motion.div 
+                    className="bg-red-500/10 p-3 rounded-xl group-hover:bg-red-50 transition-colors"
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     <MapPin className="w-5 h-5 text-red-500" />
-                  </div>
+                  </motion.div>
                   <h3 className="text-xl font-bold text-white group-hover:text-black transition-colors">{region.name}</h3>
                 </div>
                 <p className="text-white/50 group-hover:text-gray-500 transition-colors">{region.desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
