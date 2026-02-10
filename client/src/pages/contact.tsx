@@ -8,7 +8,7 @@ export default function Contact() {
       <Navbar />
       
       <section className="pt-32 pb-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Contact Us</p>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">Let's Talk</h1>
           <p className="text-xl text-white/50 max-w-2xl">
@@ -18,7 +18,7 @@ export default function Contact() {
       </section>
 
       <section className="py-10 pb-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="card-float p-8 md:p-12">
               <h2 className="text-2xl font-extrabold text-black mb-8">Send us a message</h2>

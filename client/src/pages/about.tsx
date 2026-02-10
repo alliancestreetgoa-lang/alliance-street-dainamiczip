@@ -9,7 +9,7 @@ export default function About() {
       <Navbar />
       
       <section className="pt-32 pb-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">About Us</p>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">We are more than just accountants.</h1>
           <p className="text-xl text-white/50 max-w-2xl">
@@ -19,7 +19,7 @@ export default function About() {
       </section>
 
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="card-float p-10 md:p-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
@@ -40,7 +40,7 @@ export default function About() {
       </section>
 
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Our Values</p>
             <h2 className="text-3xl font-extrabold text-white mb-6">The foundation of everything we do.</h2>
@@ -65,7 +65,7 @@ export default function About() {
       </section>
       
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-600 via-red-500 to-red-700 p-12 md:p-16 text-center">
             <h2 className="text-3xl font-extrabold text-white mb-8">Ready to work with us?</h2>
             <Link href="/contact">

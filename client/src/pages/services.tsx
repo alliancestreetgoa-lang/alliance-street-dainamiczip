@@ -30,7 +30,7 @@ export default function Services() {
       </section>
 
       <section className="py-10 pb-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <ServiceCard 

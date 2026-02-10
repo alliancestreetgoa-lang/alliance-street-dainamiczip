@@ -19,7 +19,7 @@ export default function Home() {
 
       {/* Hero Section - alliancestreet.ae style */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +60,7 @@ export default function Home() {
 
       {/* Mission Statement - floating white card */}
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <motion.div {...fadeInUp} className="card-float p-12 md:p-16 max-w-5xl mx-auto">
             <p className="text-2xl md:text-4xl font-bold text-black leading-snug">
               Our mission is to{" "}
@@ -74,7 +74,7 @@ export default function Home() {
 
       {/* Value Proposition */}
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <motion.div 
             {...fadeInUp}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -98,7 +98,7 @@ export default function Home() {
 
       {/* Services Preview */}
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Our Solutions</p>
@@ -148,7 +148,7 @@ export default function Home() {
 
       {/* Why Us Section - with image */}
       <section className="py-20 overflow-hidden">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="card-float p-10 md:p-16">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2 relative">
@@ -192,7 +192,7 @@ export default function Home() {
 
       {/* Process Section */}
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Our Process</p>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">The Battleplan</h2>
@@ -237,7 +237,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="relative overflow-hidden rounded-3xl">
             <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-500 to-red-700" />
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />

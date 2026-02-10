@@ -16,7 +16,7 @@ export default function Global() {
       <Navbar />
       
       <section className="pt-32 pb-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Global Coverage</p>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">Wherever You Do Business</h1>
           <p className="text-xl text-white/50 max-w-2xl">
@@ -26,7 +26,7 @@ export default function Global() {
       </section>
 
       <section className="py-10 pb-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {regions.map((region, i) => (
               <div key={i} className="group bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white hover:text-black hover:border-transparent hover:shadow-2xl transition-all duration-300">

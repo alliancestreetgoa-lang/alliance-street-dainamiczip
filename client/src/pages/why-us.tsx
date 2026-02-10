@@ -8,7 +8,7 @@ export default function WhyUs() {
       <Navbar />
       
       <section className="pt-32 pb-20">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <p className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Why Us</p>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">Why Alliance Street?</h1>
           <p className="text-xl text-white/50 max-w-2xl">
@@ -18,7 +18,7 @@ export default function WhyUs() {
       </section>
 
       <section className="py-10">
-        <div className="container px-6">
+        <div className="container mx-auto px-6">
           <div className="card-float p-10 md:p-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
               <div>
