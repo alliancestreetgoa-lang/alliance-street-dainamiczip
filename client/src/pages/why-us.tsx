@@ -22,12 +22,12 @@ export default function WhyUs() {
           <div className="card-float p-10 md:p-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
               <div>
-                <h2 className="text-3xl font-extrabold text-black mb-6">Not Just Vendors, Partners</h2>
+                <h2 className="text-3xl font-extrabold text-black mb-6">A Strategic Partner for Scaled Organizations</h2>
                 <p className="text-gray-500 leading-relaxed text-lg mb-4">
-                  Many outsourcing firms operate like factories — churning out tasks with little understanding of the bigger picture. We operate differently.
+                  Most outsourcing providers focus on task execution. We focus on outcomes.
                 </p>
                 <p className="text-gray-500 leading-relaxed text-lg">
-                  At Alliance Street, we take the time to understand your business model, your growth goals, and your specific challenges. This allows us to provide proactive advice, not just reactive reporting.
+                  At Alliance Street, we partner with leadership teams to gain a deep understanding of your operating model, strategic priorities, and growth agenda. This enables us to deliver forward-looking insights, proactive advisory support, and reporting that informs decision-making at the highest levels. We don't simply support your business—we help shape its direction.
                 </p>
               </div>
               
