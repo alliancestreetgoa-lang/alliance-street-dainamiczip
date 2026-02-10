@@ -4,6 +4,56 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, Globe, Phone, Mail, MapPin } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { motion, AnimatePresence } from "framer-motion";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/why-us", label: "Why Us" },
+  { href: "/global", label: "Global Coverage" },
+  { href: "/contact", label: "Contact" },
+];
+
+const spring = {
+  type: "spring" as const,
+  stiffness: 380,
+  damping: 30,
+  mass: 0.8,
+};
+
+function NavTab({ link, isActive }: { link: typeof navLinks[0]; isActive: boolean }) {
+  return (
+    <Link href={link.href}>
+      <motion.span
+        className={cn(
+          "relative text-sm font-medium px-4 py-2 cursor-pointer inline-block",
+          isActive ? "text-white" : "text-white/70"
+        )}
+        whileHover={{ scale: 1.05, y: -1 }}
+        transition={spring}
+        data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+      >
+        {link.label}
+        {isActive && (
+          <motion.span
+            className="absolute bottom-0 left-[20%] right-[20%] h-[2px] rounded-full"
+            style={{ background: "linear-gradient(90deg, #e04050, #ff6b7a)" }}
+            layoutId="nav-underline"
+            transition={spring}
+          />
+        )}
+        <motion.span
+          className="absolute bottom-0 left-[20%] right-[20%] h-[2px] rounded-full bg-white/30"
+          initial={{ scaleX: 0 }}
+          whileHover={{ scaleX: 1 }}
+          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+          style={{ originX: 0.5, display: isActive ? "none" : "block" }}
+        />
+      </motion.span>
+    </Link>
+  );
+}
 
 export function Navbar() {
   const [location] = useLocation();
@@ -17,55 +67,50 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/why-us", label: "Why Us" },
-    { href: "/global", label: "Global Coverage" },
-    { href: "/contact", label: "Contact" },
-  ];
-
   return (
-    <nav
+    <motion.nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50",
         isScrolled
           ? "bg-black/90 backdrop-blur-xl py-3 border-b border-white/5"
           : "bg-transparent py-5"
       )}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/">
-          <div className="cursor-pointer">
+          <motion.div
+            className="cursor-pointer"
+            whileHover={{ scale: 1.03 }}
+            transition={spring}
+          >
             <img 
               src="/images/logo.png" 
               alt="Alliance Street Accounting" 
               className="h-12 md:h-14 w-auto object-contain"
             />
-          </div>
+          </motion.div>
         </Link>
 
         <div className="hidden lg:flex items-center gap-1">
-          {links.map((link) => (
-            <Link
+          {navLinks.map((link) => (
+            <NavTab
               key={link.href}
-              href={link.href}
-              className={cn(
-                "nav-tab text-sm font-medium px-4 py-2 relative",
-                location === link.href 
-                  ? "nav-tab-active text-white" 
-                  : "text-white/70"
-              )}
-              data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-            >
-              {link.label}
-            </Link>
+              link={link}
+              isActive={location === link.href}
+            />
           ))}
           <Link href="/contact" className="ml-4" data-testid="nav-cta-button">
-            <span className="nav-cta-btn inline-block bg-white text-black rounded-full px-6 py-2 font-semibold text-sm">
+            <motion.span
+              className="nav-cta-btn inline-block bg-white text-black rounded-full px-6 py-2 font-semibold text-sm cursor-pointer"
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              transition={spring}
+            >
               Get in Touch
-            </span>
+            </motion.span>
           </Link>
         </div>
 
@@ -81,28 +126,57 @@ export function Navbar() {
                 <div className="mb-4">
                   <img src="/images/logo.png" alt="Alliance Street" className="h-12 w-auto" />
                 </div>
-                {links.map((link) => (
-                  <Link
+                {navLinks.map((link, i) => (
+                  <motion.div
                     key={link.href}
-                    href={link.href}
-                    className={cn("text-lg font-medium py-2 transition-colors block", location === link.href ? "text-red-500" : "text-white/80 hover:text-white")}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    {link.label}
-                  </Link>
+                    <Link
+                      href={link.href}
+                      className={cn("text-lg font-medium py-2 transition-colors block", location === link.href ? "text-red-500" : "text-white/80 hover:text-white")}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 ))}
-                <div className="mt-6">
+                <motion.div
+                  className="mt-6"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.3 }}
+                >
                   <Link href="/contact" className="block w-full">
                     <Button className="w-full bg-white text-black hover:bg-gray-100 rounded-full font-semibold" asChild>
                       <span>Get in Touch</span>
                     </Button>
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </SheetContent>
           </Sheet>
         </div>
       </div>
-    </nav>
+    </motion.nav>
+  );
+}
+
+export function PageTransition({ children }: { children: React.ReactNode }) {
+  const [location] = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
