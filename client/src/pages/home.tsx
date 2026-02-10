@@ -125,11 +125,6 @@ export default function Home() {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8">
-              <span className="text-sm text-white/70">Global Accounting & Outsourcing Firm</span>
-              <ArrowRight className="w-3.5 h-3.5 text-red-500" />
-            </motion.div>
-
             <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight" data-testid="hero-heading">
               Global Accounting &{" "}
               <span className="text-red-500">Virtual CFO</span> Services Built for Growing Businesses
