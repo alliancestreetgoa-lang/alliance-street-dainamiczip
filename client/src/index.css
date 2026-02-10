@@ -35,27 +35,25 @@
 }
 
 :root {
-  /* New Red/Black Theme based on image */
-  --primary: 0 0% 0%; /* Black */
+  /* Corporate Navy Blue Palette */
+  --primary: 215 45% 20%; /* Deep Navy */
   --primary-foreground: 0 0% 100%;
 
-  /* The Red from the logo/gradient */
-  --secondary: 356 75% 42%; /* #BC1A22 approx - Vibrant Red */
-  --secondary-foreground: 0 0% 100%;
+  /* Subtle Gold/Bronze for accent - Premium feel */
+  --secondary: 35 30% 92%; /* Very Light Gold Background */
+  --secondary-foreground: 215 45% 20%;
 
-  --accent: 356 75% 42%; /* Matching the red */
+  --accent: 38 60% 55%; /* Gold/Bronze */
   --accent-foreground: 0 0% 100%;
 
-  /* Dark Background for the page body */
-  --background: 0 0% 5%; /* Very dark gray/black */
-  --foreground: 0 0% 100%; /* White text by default on body */
+  --background: 0 0% 100%;
+  --foreground: 215 25% 20%; /* Dark Charcoal Blue */
 
-  /* White Card Background */
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 10%; /* Dark text on card */
+  --card-foreground: 215 25% 20%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 10%;
+  --popover-foreground: 215 25% 20%;
 
   --muted: 210 20% 96%;
   --muted-foreground: 215 20% 45%;
@@ -65,9 +63,9 @@
 
   --border: 214 20% 90%;
   --input: 214 20% 90%;
-  --ring: 356 75% 42%;
+  --ring: 215 45% 20%;
 
-  --radius: 0.5rem;
+  --radius: 0.25rem; /* Sharp corners for corporate feel */
 }
 
 @layer base {
@@ -76,27 +74,20 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    background: radial-gradient(circle at 50% -20%, #8a1015 0%, #000000 60%);
-    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans tracking-tight; /* Switched to sans for modern look */
+    @apply font-serif tracking-tight text-primary;
   }
+}
+
+/* Custom Utility for Text Balance */
+.text-balance {
+  text-wrap: balance;
 }
 
 /* Glassmorphism utility */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Pill Nav Styles */
-.nav-pill {
-  @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white;
-}
-
-.nav-pill.active {
-  @apply bg-white/20 text-white shadow-sm;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
