@@ -113,8 +113,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ServiceCard 
-              title="Accounting Services" 
-              description="Full-cycle accounting management ensuring accuracy and timeliness in your financial records."
+              title="Accounting & Bookkeeping Services" 
+              description="Scalable accounting and bookkeeping solutions that bring structure, clarity, and consistency to your financial operations—so leadership can focus on growth."
               icon={Calculator}
             />
             <ServiceCard 
