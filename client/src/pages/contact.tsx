@@ -39,7 +39,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-sm">Email Us</h4>
-                      <a href="mailto:hello@alliancestreet.com" className="text-red-400 hover:text-red-300 transition-colors">hello@alliancestreet.com</a>
+                      <a href="mailto:shaukin@alliancestreet.ae" className="text-red-400 hover:text-red-300 transition-colors">shaukin@alliancestreet.ae</a>
                       <p className="text-xs text-white/40 mt-1">We typically reply within 24 hours.</p>
                     </div>
                   </div>
