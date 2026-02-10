@@ -62,11 +62,11 @@ export default function Home() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <motion.div {...fadeInUp} className="card-float p-12 md:p-16 max-w-5xl mx-auto">
-            <p className="text-2xl md:text-4xl font-bold text-black leading-snug">
-              Our mission is to{" "}
-              <span className="text-red-500">help businesses</span>{" "}
-              earn more and keep what they deserve —{" "}
-              <span className="text-gray-400">which is everything.</span>
+            <p className="text-2xl md:text-4xl font-bold leading-snug">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-red-800">Our mission is to</span>{" "}
+              <span className="text-red-600">help businesses</span>{" "}
+              <span className="text-black">earn more and keep what they deserve —</span>{" "}
+              <span className="text-red-400">which is everything.</span>
             </p>
           </motion.div>
         </div>
