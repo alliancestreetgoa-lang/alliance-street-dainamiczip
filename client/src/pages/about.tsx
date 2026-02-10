@@ -85,7 +85,7 @@ export default function About() {
                 viewport={{ once: true }}
               >
                 <motion.img 
-                  src="/images/hero-building.jpg" 
+                  src="/images/hero-building.png" 
                   alt="Our Office" 
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.05 }}
