@@ -111,12 +111,77 @@
   }
 }
 
+/* Navigation micro-interactions */
+.nav-tab {
+  position: relative;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.nav-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e04050, #ff6b7a);
+  border-radius: 1px;
+  transform: translateX(-50%);
+  transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.nav-tab:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.nav-tab:hover::after {
+  width: 60%;
+  opacity: 1;
+}
+
+.nav-tab-active::after {
+  width: 60%;
+  opacity: 1;
+}
+
+.nav-tab-active {
+  color: #ffffff;
+}
+
+.nav-cta-btn {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.nav-cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+  background-color: #f0f0f0;
+}
+
 .btn-dark {
-  @apply bg-black text-white rounded-full px-8 py-3 font-semibold transition-all hover:bg-gray-800;
+  @apply bg-black text-white rounded-full px-8 py-3 font-semibold;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-dark:hover {
+  transform: scale(1.05);
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn-outline-dark {
-  @apply border border-white/20 text-white rounded-full px-8 py-3 font-semibold transition-all hover:bg-white/10;
+  @apply border border-white/20 text-white rounded-full px-8 py-3 font-semibold;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline-dark:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .card-float {

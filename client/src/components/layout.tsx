@@ -52,10 +52,10 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm font-medium px-4 py-2 rounded-full transition-all",
+                "nav-tab text-sm font-medium px-4 py-2 relative",
                 location === link.href 
-                  ? "text-white bg-white/10" 
-                  : "text-white/70 hover:text-white hover:bg-white/5"
+                  ? "nav-tab-active text-white" 
+                  : "text-white/70"
               )}
               data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
             >
@@ -63,12 +63,9 @@ export function Navbar() {
             </Link>
           ))}
           <Link href="/contact" className="ml-4" data-testid="nav-cta-button">
-            <Button 
-              className="bg-white text-black hover:bg-gray-100 rounded-full px-6 font-semibold"
-              asChild
-            >
-              <span>Get in Touch</span>
-            </Button>
+            <span className="nav-cta-btn inline-block bg-white text-black rounded-full px-6 py-2 font-semibold text-sm">
+              Get in Touch
+            </span>
           </Link>
         </div>
 
