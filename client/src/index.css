@@ -32,40 +32,43 @@
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 2px);
+  
+  --color-glow-red: hsl(354, 70%, 50%);
 }
 
 :root {
-  /* Corporate Navy Blue Palette */
-  --primary: 215 45% 20%; /* Deep Navy */
+  /* Bold Red & Black Palette from reference image */
+  
+  /* Primary Red - Vibrant and bold */
+  --primary: 354 78% 55%; 
   --primary-foreground: 0 0% 100%;
 
-  /* Subtle Gold/Bronze for accent - Premium feel */
-  --secondary: 35 30% 92%; /* Very Light Gold Background */
-  --secondary-foreground: 215 45% 20%;
+  /* Dark Backgrounds */
+  --background: 0 0% 3%; /* Deep almost-black */
+  --foreground: 0 0% 100%;
 
-  --accent: 38 60% 55%; /* Gold/Bronze */
+  /* White Cards */
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+
+  /* Accents */
+  --accent: 354 80% 60%; /* Slightly lighter red for hovers/accents */
   --accent-foreground: 0 0% 100%;
 
-  --background: 0 0% 100%;
-  --foreground: 215 25% 20%; /* Dark Charcoal Blue */
+  --secondary: 0 0% 10%; /* Dark gray for secondary elements */
+  --secondary-foreground: 0 0% 100%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 215 25% 20%;
-
-  --popover: 0 0% 100%;
-  --popover-foreground: 215 25% 20%;
-
-  --muted: 210 20% 96%;
-  --muted-foreground: 215 20% 45%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 214 20% 90%;
-  --input: 214 20% 90%;
-  --ring: 215 45% 20%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 354 78% 55%;
 
-  --radius: 0.25rem; /* Sharp corners for corporate feel */
+  --radius: 0.75rem; /* Softer, more modern rounded corners like the card in image */
 }
 
 @layer base {
@@ -74,20 +77,21 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 50% 0%, hsla(354, 78%, 55%, 0.4) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, hsla(354, 78%, 55%, 0.15) 0%, transparent 30%);
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight text-primary;
+    @apply font-serif tracking-tight;
   }
 }
 
-/* Custom Utility for Text Balance */
-.text-balance {
-  text-wrap: balance;
+/* Custom utility classes */
+.glass-card {
+  @apply bg-white text-black shadow-2xl;
 }
 
-/* Glassmorphism utility */
-.glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400;
 }
