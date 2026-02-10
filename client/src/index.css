@@ -84,25 +84,7 @@
   }
   body {
     @apply font-sans antialiased text-foreground;
-    background: linear-gradient(
-      180deg,
-      #020001 0%,
-      #0a0103 4%,
-      #150306 10%,
-      #25060c 16%,
-      #3a0912 23%,
-      #50101a 30%,
-      #6e1522 38%,
-      #8c1c2c 46%,
-      #a82436 54%,
-      #c43040 62%,
-      #d84550 70%,
-      #e46070 78%,
-      #ec8490 85%,
-      #f2a8b2 91%,
-      #f7cdd3 96%,
-      #fce8eb 100%
-    );
+    background: #0B0B0B;
     background-attachment: fixed;
     min-height: 100vh;
   }
