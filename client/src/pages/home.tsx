@@ -41,6 +41,7 @@ const valueProps = [
     icon: Globe2,
     title: "Global Delivery, Local Understanding",
     desc: "We bridge the gap between cost-effective global delivery and the nuance of local compliance and business culture across US, UK, EU, and UAE.",
+    image: "/images/value-global.png",
     details: {
       overview: "Operating across borders demands more than basic outsourcing — it requires a partner who truly understands the regulatory landscape, cultural nuances, and business practices of every market you serve. Alliance Street combines the efficiency of global delivery with deep, in-country expertise across the US, UK, EU, UAE, Canada, and India.",
       features: [
@@ -58,6 +59,7 @@ const valueProps = [
     icon: TrendingUp,
     title: "Beyond Bookkeeping",
     desc: "We don't just record history; we help shape your future. Our Virtual CFO services provide the actionable insights you need to drive growth.",
+    image: "/images/value-bookkeeping.png",
     details: {
       overview: "Traditional bookkeeping keeps your records accurate, but it rarely moves the needle on growth. At Alliance Street, we go far beyond data entry and reconciliation. Our services are designed to turn your financial data into a strategic asset — giving you the insights, forecasts, and decision-support you need to lead with confidence.",
       features: [
@@ -75,6 +77,7 @@ const valueProps = [
     icon: ShieldCheck,
     title: "Scalable Finance Support",
     desc: "From startup to enterprise, our SOP-driven processes scale with you. We become a seamless extension of your internal team.",
+    image: "/images/value-scalable.png",
     details: {
       overview: "As your business grows, so do the demands on your finance function. Alliance Street's scalable support model is designed to grow with you — from early-stage bookkeeping to complex, multi-entity financial operations. Our SOP-driven processes ensure consistency and quality at every stage, so you never outgrow your finance partner.",
       features: [
@@ -198,24 +201,30 @@ export default function Home() {
             {valueProps.map((item, i) => (
               <motion.div 
                 key={i} 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors cursor-pointer group"
+                className="relative overflow-hidden rounded-2xl border border-white/10 cursor-pointer group min-h-[320px] flex flex-col justify-end"
                 variants={fadeUp}
                 whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                 onClick={() => setSelectedValue(i)}
                 data-testid={`card-value-${i}`}
               >
-                <motion.div 
-                  className="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-5"
-                  whileHover={{ rotate: 5, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <item.icon className="w-6 h-6 text-red-500" />
-                </motion.div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-white/50 leading-relaxed mb-4">{item.desc}</p>
-                <span className="inline-flex items-center gap-1.5 text-red-400 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn more <ChevronRight className="w-4 h-4" />
-                </span>
+                <div className="absolute inset-0 z-0">
+                  <img src={item.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30" />
+                </div>
+                <div className="relative z-10 p-8">
+                  <motion.div 
+                    className="w-12 h-12 bg-red-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-5 border border-red-500/20"
+                    whileHover={{ rotate: 5, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <item.icon className="w-6 h-6 text-red-500" />
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                  <p className="text-white/60 leading-relaxed mb-4">{item.desc}</p>
+                  <span className="inline-flex items-center gap-1.5 text-red-400 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn more <ChevronRight className="w-4 h-4" />
+                  </span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
