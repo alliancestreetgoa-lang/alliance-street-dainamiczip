@@ -1,10 +1,11 @@
 import { Navbar, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/service-card";
-import { ArrowRight, Calculator, BarChart3, Globe2, CheckCircle2, TrendingUp, ShieldCheck } from "lucide-react";
+import { ArrowRight, Calculator, BarChart3, Globe2, CheckCircle2, TrendingUp, ShieldCheck, X, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import React from "react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const stagger = {
   hidden: {},
@@ -35,7 +36,62 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease } }
 };
 
+const valueProps = [
+  {
+    icon: Globe2,
+    title: "Global Delivery, Local Understanding",
+    desc: "We bridge the gap between cost-effective global delivery and the nuance of local compliance and business culture across US, UK, EU, and UAE.",
+    details: {
+      overview: "Operating across borders demands more than basic outsourcing — it requires a partner who truly understands the regulatory landscape, cultural nuances, and business practices of every market you serve. Alliance Street combines the efficiency of global delivery with deep, in-country expertise across the US, UK, EU, UAE, Canada, and India.",
+      features: [
+        "Multi-jurisdictional compliance expertise across 6+ regions",
+        "Local accounting standards proficiency (GAAP, IFRS, UK GAAP)",
+        "Culturally aligned communication with your regional teams",
+        "Time-zone optimized delivery for seamless collaboration",
+        "In-country regulatory monitoring and proactive advisory",
+        "Localized reporting tailored to each market's requirements"
+      ],
+      benefits: "With Alliance Street, you get the best of both worlds: the cost-efficiency and scalability of a global delivery model, combined with the precision and cultural awareness of a local team. No miscommunication, no compliance gaps — just seamless, reliable financial operations wherever you do business."
+    }
+  },
+  {
+    icon: TrendingUp,
+    title: "Beyond Bookkeeping",
+    desc: "We don't just record history; we help shape your future. Our Virtual CFO services provide the actionable insights you need to drive growth.",
+    details: {
+      overview: "Traditional bookkeeping keeps your records accurate, but it rarely moves the needle on growth. At Alliance Street, we go far beyond data entry and reconciliation. Our services are designed to turn your financial data into a strategic asset — giving you the insights, forecasts, and decision-support you need to lead with confidence.",
+      features: [
+        "Forward-looking financial planning and budgeting",
+        "Cash flow forecasting with scenario modeling",
+        "KPI dashboards that highlight what matters most",
+        "Profitability analysis by product, service, and customer",
+        "Fundraising support including pitch decks and financial models",
+        "Monthly executive reports with actionable recommendations"
+      ],
+      benefits: "When your finance function moves beyond recording the past, it becomes a driver of future success. Our approach gives leadership the real-time visibility and strategic clarity to make faster, smarter decisions — helping you grow revenue, reduce waste, and build a more resilient business."
+    }
+  },
+  {
+    icon: ShieldCheck,
+    title: "Scalable Finance Support",
+    desc: "From startup to enterprise, our SOP-driven processes scale with you. We become a seamless extension of your internal team.",
+    details: {
+      overview: "As your business grows, so do the demands on your finance function. Alliance Street's scalable support model is designed to grow with you — from early-stage bookkeeping to complex, multi-entity financial operations. Our SOP-driven processes ensure consistency and quality at every stage, so you never outgrow your finance partner.",
+      features: [
+        "Flexible engagement models that adapt as you scale",
+        "Documented SOPs for every process ensuring consistency",
+        "Dedicated teams that integrate seamlessly with your staff",
+        "Multi-entity and multi-currency accounting capabilities",
+        "Technology stack optimization (QuickBooks, Xero, NetSuite)",
+        "Rapid onboarding of new entities, subsidiaries, or regions"
+      ],
+      benefits: "Scaling your finance function shouldn't mean sacrificing quality or spending months hiring and training. With Alliance Street, you get an elastic finance team that scales on demand — maintaining the same high standards whether you're processing 100 transactions or 100,000. We become a trusted extension of your team, not just a vendor."
+    }
+  }
+];
+
 export default function Home() {
+  const [selectedValue, setSelectedValue] = React.useState<number | null>(null);
   const heroRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -139,16 +195,14 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            {[
-              { icon: Globe2, title: "Global Delivery, Local Understanding", desc: "We bridge the gap between cost-effective global delivery and the nuance of local compliance and business culture across US, UK, EU, and UAE." },
-              { icon: TrendingUp, title: "Beyond Bookkeeping", desc: "We don't just record history; we help shape your future. Our Virtual CFO services provide the actionable insights you need to drive growth." },
-              { icon: ShieldCheck, title: "Scalable Finance Support", desc: "From startup to enterprise, our SOP-driven processes scale with you. We become a seamless extension of your internal team." }
-            ].map((item, i) => (
+            {valueProps.map((item, i) => (
               <motion.div 
                 key={i} 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-colors cursor-pointer group"
                 variants={fadeUp}
                 whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+                onClick={() => setSelectedValue(i)}
+                data-testid={`card-value-${i}`}
               >
                 <motion.div 
                   className="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center mb-5"
@@ -158,12 +212,72 @@ export default function Home() {
                   <item.icon className="w-6 h-6 text-red-500" />
                 </motion.div>
                 <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-white/50 leading-relaxed">{item.desc}</p>
+                <p className="text-white/50 leading-relaxed mb-4">{item.desc}</p>
+                <span className="inline-flex items-center gap-1.5 text-red-400 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ChevronRight className="w-4 h-4" />
+                </span>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
+
+      {/* Value Proposition Modal */}
+      <Dialog open={selectedValue !== null} onOpenChange={() => setSelectedValue(null)}>
+        <DialogContent className="max-w-2xl bg-[#111] border border-white/10 text-white p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
+          {selectedValue !== null && (() => {
+            const item = valueProps[selectedValue];
+            return (
+              <>
+                <div className="bg-gradient-to-br from-red-600/20 via-red-500/10 to-transparent p-8 pb-6">
+                  <div className="w-14 h-14 bg-red-500/20 rounded-2xl flex items-center justify-center mb-5">
+                    <item.icon className="w-7 h-7 text-red-500" />
+                  </div>
+                  <DialogTitle className="text-2xl md:text-3xl font-extrabold text-white mb-3">
+                    {item.title}
+                  </DialogTitle>
+                  <p className="text-white/50 leading-relaxed">{item.desc}</p>
+                </div>
+
+                <div className="p-8 space-y-8">
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">Overview</h3>
+                    <p className="text-white/70 leading-relaxed">{item.details.overview}</p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-red-400 mb-4">What We Deliver</h3>
+                    <ul className="space-y-3">
+                      {item.details.features.map((feature, fi) => (
+                        <li key={fi} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                          <span className="text-white/70">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-red-400 mb-3">The Impact</h3>
+                    <p className="text-white/70 leading-relaxed">{item.details.benefits}</p>
+                  </div>
+
+                  <Link href="/contact">
+                    <motion.button 
+                      className="w-full bg-red-600 hover:bg-red-700 text-white rounded-full px-8 py-4 font-bold text-base transition-colors"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      data-testid="button-value-cta"
+                    >
+                      Get Started with {item.title}
+                    </motion.button>
+                  </Link>
+                </div>
+              </>
+            );
+          })()}
+        </DialogContent>
+      </Dialog>
 
       {/* Services Preview */}
       <section className="py-20">
