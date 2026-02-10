@@ -48,26 +48,26 @@ export function Navbar() {
 
         <div className="hidden lg:flex items-center gap-1">
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <a
-                className={cn(
-                  "text-sm font-medium px-4 py-2 rounded-full transition-all",
-                  location === link.href 
-                    ? "text-white bg-white/10" 
-                    : "text-white/70 hover:text-white hover:bg-white/5"
-                )}
-                data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                {link.label}
-              </a>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium px-4 py-2 rounded-full transition-all",
+                location === link.href 
+                  ? "text-white bg-white/10" 
+                  : "text-white/70 hover:text-white hover:bg-white/5"
+              )}
+              data-testid={`nav-link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+            >
+              {link.label}
             </Link>
           ))}
-          <Link href="/contact">
+          <Link href="/contact" className="ml-4" data-testid="nav-cta-button">
             <Button 
-              className="ml-4 bg-white text-black hover:bg-gray-100 rounded-full px-6 font-semibold"
-              data-testid="nav-cta-button"
+              className="bg-white text-black hover:bg-gray-100 rounded-full px-6 font-semibold"
+              asChild
             >
-              Get in Touch
+              <span>Get in Touch</span>
             </Button>
           </Link>
         </div>
@@ -85,16 +85,18 @@ export function Navbar() {
                   <img src="/images/logo.png" alt="Alliance Street" className="h-12 w-auto" />
                 </div>
                 {links.map((link) => (
-                  <Link key={link.href} href={link.href}>
-                    <a className={cn("text-lg font-medium py-2 transition-colors", location === link.href ? "text-red-500" : "text-white/80 hover:text-white")}>
-                      {link.label}
-                    </a>
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn("text-lg font-medium py-2 transition-colors block", location === link.href ? "text-red-500" : "text-white/80 hover:text-white")}
+                  >
+                    {link.label}
                   </Link>
                 ))}
                 <div className="mt-6">
-                  <Link href="/contact">
-                    <Button className="w-full bg-white text-black hover:bg-gray-100 rounded-full font-semibold">
-                      Get in Touch
+                  <Link href="/contact" className="block w-full">
+                    <Button className="w-full bg-white text-black hover:bg-gray-100 rounded-full font-semibold" asChild>
+                      <span>Get in Touch</span>
                     </Button>
                   </Link>
                 </div>
