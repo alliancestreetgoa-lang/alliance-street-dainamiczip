@@ -5,7 +5,7 @@
 
 @theme inline {
   --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Libre Baskerville', serif;
+  --font-serif: 'Plus Jakarta Sans', sans-serif;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
