@@ -1,7 +1,7 @@
 import { Navbar, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/service-card";
-import { ArrowRight, Calculator, BarChart3, Globe2, FileText, CheckCircle2, TrendingUp, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Calculator, BarChart3, Globe2, CheckCircle2, TrendingUp, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 
@@ -111,16 +111,11 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ServiceCard 
               title="Accounting Services" 
               description="Full-cycle accounting management ensuring accuracy and timeliness in your financial records."
               icon={Calculator}
-            />
-            <ServiceCard 
-              title="Bookkeeping Services" 
-              description="Day-to-day transaction recording, reconciliation, and ledger maintenance to keep you organized."
-              icon={FileText}
             />
             <ServiceCard 
               title="Virtual CFO Services" 
@@ -133,14 +128,9 @@ export default function Home() {
               icon={ShieldCheck}
             />
             <ServiceCard 
-              title="Back-Office Support" 
-              description="Efficient data entry, administrative support, and process management to free up your time."
-              icon={Users}
-            />
-            <ServiceCard 
-              title="Data Entry & Processing" 
-              description="Accurate and fast data processing services to support your operational needs."
-              icon={FileText}
+              title="Financial Analysis" 
+              description="Deep dive into your numbers to uncover trends, opportunities, and risks."
+              icon={TrendingUp}
             />
           </div>
         </div>

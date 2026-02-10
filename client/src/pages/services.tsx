@@ -1,18 +1,14 @@
 import { Navbar, Footer } from "@/components/layout";
 import { ServiceCard } from "@/components/service-card";
-import { Calculator, BarChart3, ShieldCheck, FileText, Users, Search, Briefcase, Coins } from "lucide-react";
+import { Calculator, BarChart3, ShieldCheck, Briefcase } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Services() {
   const services = [
     { title: "Accounting Services", description: "Comprehensive accounting management tailored to your industry standards. We handle everything from general ledger maintenance to complex financial statement preparation.", icon: Calculator },
     { title: "Virtual CFO", description: "Strategic financial guidance to help you navigate growth. Includes cash flow management, budgeting, financial modeling, and board-level reporting.", icon: BarChart3 },
-    { title: "Bookkeeping", description: "Meticulous recording of daily financial transactions. We ensure your books are always up-to-date, reconciled, and audit-ready.", icon: FileText },
     { title: "Tax Compliance", description: "Navigating the complexities of local and international tax laws. We assist with filing, planning, and ensuring full compliance to minimize risk.", icon: ShieldCheck },
-    { title: "Back-Office Support", description: "Streamline your operations with our administrative support. From invoicing to payroll processing, we handle the tasks that slow you down.", icon: Users },
-    { title: "Data Entry & Processing", description: "High-volume data processing with speed and accuracy. Perfect for businesses with significant document management needs.", icon: Search },
-    { title: "Financial Analysis", description: "Deep dive into your numbers to uncover trends, opportunities, and risks. We turn data into actionable business intelligence.", icon: Briefcase },
-    { title: "Payroll Management", description: "End-to-end payroll processing ensuring your team gets paid on time, every time, with all tax withholdings and benefits handled correctly.", icon: Coins }
+    { title: "Financial Analysis", description: "Deep dive into your numbers to uncover trends, opportunities, and risks. We turn data into actionable business intelligence.", icon: Briefcase }
   ];
 
   return (
