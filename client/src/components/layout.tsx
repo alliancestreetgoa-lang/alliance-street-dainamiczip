@@ -38,13 +38,12 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/">
-          <div className="flex flex-col cursor-pointer group">
-            <span className={cn("font-serif text-xl md:text-2xl font-bold tracking-tight", isScrolled ? "text-primary" : "text-primary md:text-white md:shadow-black/10 md:drop-shadow-md")}>
-              ALLIANCE STREET
-            </span>
-            <span className={cn("text-[0.65rem] tracking-[0.2em] font-medium uppercase mt-0.5", isScrolled ? "text-accent" : "text-accent md:text-white/90")}>
-              Accounting & Advisory
-            </span>
+          <div className="cursor-pointer">
+            <img 
+              src="/images/logo.png" 
+              alt="Alliance Street Accounting" 
+              className="h-14 md:h-16 w-auto object-contain"
+            />
           </div>
         </Link>
 
@@ -113,7 +112,9 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <h3 className="text-2xl font-bold font-serif mb-6 text-white">ALLIANCE STREET</h3>
+            <div className="mb-6 bg-white p-2 w-fit rounded-sm">
+              <img src="/images/logo.png" alt="Alliance Street Accounting" className="h-12 w-auto" />
+            </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
               Global accounting and virtual CFO services built for growing businesses. We provide the financial clarity and operational backbone you need to scale.
             </p>
