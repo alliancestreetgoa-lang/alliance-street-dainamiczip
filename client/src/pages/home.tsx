@@ -18,7 +18,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section - alliancestreet.ae style */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-white via-white to-red-600/80 rounded-b-[3rem]">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -27,28 +27,28 @@ export default function Home() {
             className="max-w-5xl"
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-gray-100 border border-gray-200 rounded-full px-5 py-2 mb-8">
-              <span className="text-sm text-gray-600">Global Accounting & Outsourcing Firm</span>
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-8">
+              <span className="text-sm text-white/70">Global Accounting & Outsourcing Firm</span>
               <ArrowRight className="w-3.5 h-3.5 text-red-500" />
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-black mb-8 leading-[0.95] tracking-tight" data-testid="hero-heading">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight" data-testid="hero-heading">
               Global Accounting &{" "}
-              <span className="text-red-600">Virtual CFO</span> Services Built for Growing Businesses
+              <span className="text-red-500">Virtual CFO</span> Services Built for Growing Businesses
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl leading-relaxed">
               At Alliance Street, we provide the financial clarity and operational backbone you need to scale — from bookkeeping to strategic CFO insights.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
-                <button className="bg-red-600 text-white rounded-full px-8 py-3 font-semibold transition-all hover:bg-red-700 text-base" data-testid="hero-cta-primary">
+                <button className="btn-dark text-base" data-testid="hero-cta-primary">
                   Let's talk
                 </button>
               </Link>
               <Link href="/services">
-                <button className="text-black font-semibold text-base flex items-center gap-2 px-4 py-3 hover:opacity-70 transition-all" data-testid="hero-cta-secondary">
+                <button className="btn-outline-dark text-base flex items-center gap-2" data-testid="hero-cta-secondary">
                   Our solutions
                   <ArrowRight className="w-4 h-4 text-red-500" />
                 </button>
