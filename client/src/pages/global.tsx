@@ -60,7 +60,7 @@ export default function Global() {
                 variants={fadeUp}
                 whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
               >
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 overflow-hidden rounded-2xl">
                   <img src={region.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/20" />
                 </div>
