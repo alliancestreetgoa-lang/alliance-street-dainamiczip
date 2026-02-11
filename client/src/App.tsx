@@ -12,6 +12,7 @@ import Services from "@/pages/services";
 import Contact from "@/pages/contact";
 import WhyUs from "@/pages/why-us";
 import Global from "@/pages/global";
+import { Chatbot } from "@/components/chatbot";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -48,6 +49,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <Chatbot />
       </TooltipProvider>
     </QueryClientProvider>
   );
