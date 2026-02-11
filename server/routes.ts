@@ -5,7 +5,16 @@ import { insertContactSchema } from "@shared/schema";
 import OpenAI from "openai";
 
 // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+let _openai: OpenAI | null = null;
+function getOpenAI(): OpenAI {
+  if (!_openai) {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY is not configured");
+    }
+    _openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  }
+  return _openai;
+}
 
 const SYSTEM_PROMPT = `You are a friendly and professional customer support assistant for Alliance Street Accounting, a global accounting and outsourcing firm offering services up to Virtual CFO level.
 
@@ -64,7 +73,7 @@ export async function registerRoutes(
         return res.status(400).json({ message: "Messages array is required" });
       }
 
-      const response = await openai.chat.completions.create({
+      const response = await getOpenAI().chat.completions.create({
         model: "gpt-4o-mini",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
