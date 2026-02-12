@@ -3,6 +3,7 @@ import { Users, Target, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { usePageContent } from "@/hooks/use-page-content";
 
 const stagger = {
   hidden: {},
@@ -32,6 +33,11 @@ const scaleIn = {
 };
 
 export default function About() {
+  const { data: content } = usePageContent("about");
+  const hero = content?.hero || {};
+  const mission = content?.mission || {};
+  const values = content?.values || {};
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -44,9 +50,9 @@ export default function About() {
             animate="visible"
           >
             <motion.p variants={fadeUp} className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">About Us</motion.p>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6">We are more than just accountants.</motion.h1>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6">{hero.heading || "We are more than just accountants."}</motion.h1>
             <motion.p variants={fadeUp} className="text-xl text-white/50 max-w-2xl">
-              We are your strategic partners in growth.
+              {hero.subheading || "We are your strategic partners in growth."}
             </motion.p>
           </motion.div>
         </div>
@@ -68,12 +74,12 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-black">Our Mission</motion.h2>
+              <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-black">{mission.title || "Our Mission"}</motion.h2>
               <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed text-lg">
-                At Alliance Street Accounting, our mission is to empower businesses globally with the financial clarity and operational efficiency they need to scale. We believe that high-quality financial management should be accessible, transparent, and driven by expertise.
+                {mission.paragraph1 || "At Alliance Street Accounting, our mission is to empower businesses globally with the financial clarity and operational efficiency they need to scale. We believe that high-quality financial management should be accessible, transparent, and driven by expertise."}
               </motion.p>
               <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed text-lg">
-                We combine the cost advantages of global outsourcing with the strategic insight of a top-tier CFO, giving you the best of both worlds.
+                {mission.paragraph2 || "We combine the cost advantages of global outsourcing with the strategic insight of a top-tier CFO, giving you the best of both worlds."}
               </motion.p>
             </motion.div>
           </motion.div>

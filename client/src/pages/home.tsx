@@ -6,6 +6,7 @@ import { Link } from "wouter";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import React from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { usePageContent } from "@/hooks/use-page-content";
 
 const stagger = {
   hidden: {},
@@ -102,6 +103,12 @@ export default function Home() {
   });
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const { data: content } = usePageContent("home");
+
+  const hero = content?.hero || {};
+  const mission = content?.mission || {};
+  const whyUsContent = content?.whyUs || {};
+  const processContent = content?.process || {};
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -125,13 +132,10 @@ export default function Home() {
             initial="hidden"
             animate="visible"
           >
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight" data-testid="hero-heading">
-              Global Accounting &{" "}
-              <span className="text-red-500">Virtual CFO</span> Services Built for Growing Businesses
-            </motion.h1>
+            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight" data-testid="hero-heading" dangerouslySetInnerHTML={{ __html: hero.heading || "Global Accounting &amp; <span class='text-red-500'>Virtual CFO</span> Services Built for Growing Businesses" }} />
 
             <motion.p variants={fadeUp} className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl leading-relaxed">
-              At Alliance Street, we provide the financial clarity and operational backbone you need to scale — from bookkeeping to strategic CFO insights.
+              {hero.subheading || "At Alliance Street, we provide the financial clarity and operational backbone you need to scale — from bookkeeping to strategic CFO insights."}
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
@@ -143,7 +147,7 @@ export default function Home() {
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
-                  Let's talk
+                  {hero.ctaPrimary || "Let's talk"}
                 </motion.button>
               </Link>
               <Link href="/services">
@@ -154,7 +158,7 @@ export default function Home() {
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
-                  Our solutions
+                  {hero.ctaSecondary || "Our solutions"}
                   <ArrowRight className="w-4 h-4 text-red-500" />
                 </motion.button>
               </Link>
@@ -375,19 +379,19 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <motion.p variants={fadeUp} className="text-red-500 font-semibold text-sm uppercase tracking-wider">Why Choose Us</motion.p>
-                <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-extrabold text-black">Why Partner with Alliance Street?</motion.h2>
+                <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-extrabold text-black">{whyUsContent.title || "Why Partner with Alliance Street?"}</motion.h2>
                 <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed">
-                  We believe in building long-term partnerships, not just transactional vendor relationships.
+                  {whyUsContent.description || "We believe in building long-term partnerships, not just transactional vendor relationships."}
                 </motion.p>
                 
                 <motion.ul className="space-y-4" variants={stagger}>
-                  {[
+                  {(whyUsContent.points || [
                     "Global outsourcing done right with seamless communication",
                     "Strict SOP-driven, process-based delivery models",
                     "Expertise up to Virtual CFO level for strategic guidance",
                     "Extension of your client finance teams",
                     "Scalable solutions that grow with your business"
-                  ].map((item, i) => (
+                  ]).map((item: string, i: number) => (
                     <motion.li key={i} className="flex items-start gap-3" variants={fadeUp}>
                       <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                       <span className="text-gray-700 font-medium">{item}</span>

@@ -12,6 +12,8 @@ import Services from "@/pages/services";
 import Contact from "@/pages/contact";
 import WhyUs from "@/pages/why-us";
 import Global from "@/pages/global";
+import Blog from "@/pages/blog";
+import BlogPost from "@/pages/blog-post";
 import { Chatbot } from "@/components/chatbot";
 import AdminLogin from "@/pages/admin/login";
 import AdminDashboard from "@/pages/admin/dashboard";
@@ -38,6 +40,8 @@ function Router() {
           <Route path="/contact" component={Contact} />
           <Route path="/why-us" component={WhyUs} />
           <Route path="/global" component={Global} />
+          <Route path="/blog" component={Blog} />
+          <Route path="/blog/:slug" component={BlogPost} />
           <Route component={NotFound} />
         </Switch>
       </PageTransition>

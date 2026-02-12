@@ -3,6 +3,7 @@ import { ServiceCard } from "@/components/service-card";
 import { Calculator, BarChart3, ShieldCheck, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { usePageContent } from "@/hooks/use-page-content";
 
 const stagger = {
   hidden: {},
@@ -22,6 +23,9 @@ const scaleIn = {
 };
 
 export default function Services() {
+  const { data: content } = usePageContent("services");
+  const hero = content?.hero || {};
+
   const services = [
     {
       title: "Accounting & Bookkeeping",
@@ -81,9 +85,9 @@ export default function Services() {
             animate="visible"
           >
             <motion.p variants={fadeUp} className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3" data-testid="text-services-subtitle">Our Services</motion.p>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6" data-testid="text-services-title">Scalable Financial Solutions</motion.h1>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6" data-testid="text-services-title">{hero.heading || "Scalable Financial Solutions"}</motion.h1>
             <motion.p variants={fadeUp} className="text-xl text-white/50 max-w-2xl mx-auto" data-testid="text-services-description">
-              Designed to support every stage of your business growth.
+              {hero.subheading || "Designed to support every stage of your business growth."}
             </motion.p>
           </motion.div>
         </div>

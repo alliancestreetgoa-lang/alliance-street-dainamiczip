@@ -2,6 +2,7 @@ import { Navbar, Footer } from "@/components/layout";
 import { ContactForm } from "@/components/contact-form";
 import { Mail, Phone, Globe2, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import { usePageContent } from "@/hooks/use-page-content";
 
 const stagger = {
   hidden: {},
@@ -26,6 +27,10 @@ const fadeRight = {
 };
 
 export default function Contact() {
+  const { data: content } = usePageContent("contact");
+  const hero = content?.hero || {};
+  const info = content?.info || {};
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -38,9 +43,9 @@ export default function Contact() {
             animate="visible"
           >
             <motion.p variants={fadeUp} className="text-red-500 font-semibold text-sm uppercase tracking-wider mb-3">Contact Us</motion.p>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6">Let's Talk</motion.h1>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6">{hero.heading || "Let's Talk"}</motion.h1>
             <motion.p variants={fadeUp} className="text-xl text-white/50 max-w-2xl">
-              Ready to transform your financial operations? Get in touch with our team today.
+              {hero.subheading || "Ready to transform your financial operations? Get in touch with our team today."}
             </motion.p>
           </motion.div>
         </div>
@@ -84,8 +89,8 @@ export default function Contact() {
                   viewport={{ once: true }}
                 >
                   {[
-                    { icon: Mail, title: "Email Us", content: <a href="mailto:shaukin@alliancestreet.ae" className="text-red-400 hover:text-red-300 transition-colors">shaukin@alliancestreet.ae</a>, sub: "We typically reply within 24 hours." },
-                    { icon: Phone, title: "Call Us", content: <a href="tel:+917375096163" className="text-white/60 hover:text-white transition-colors">+91 7375096163</a>, sub: "Mon-Fri, 11:00 AM - 10:00 PM (IST)" },
+                    { icon: Mail, title: "Email Us", content: <a href={`mailto:${info.email || "shaukin@alliancestreet.ae"}`} className="text-red-400 hover:text-red-300 transition-colors">{info.email || "shaukin@alliancestreet.ae"}</a>, sub: "We typically reply within 24 hours." },
+                    { icon: Phone, title: "Call Us", content: <a href={`tel:${(info.phone || "+91 7375096163").replace(/\s/g, '')}`} className="text-white/60 hover:text-white transition-colors">{info.phone || "+91 7375096163"}</a>, sub: info.hours || "Mon-Fri, 11:00 AM - 10:00 PM (IST)" },
                     { icon: Globe2, title: "Global Headquarters", content: <span className="text-white/60">Serving clients globally with major hubs in US, UK, and UAE.</span>, sub: null }
                   ].map((item, i) => (
                     <motion.div 
