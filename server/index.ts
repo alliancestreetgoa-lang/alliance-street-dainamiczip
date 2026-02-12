@@ -74,6 +74,9 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  const { autoSeed } = await import("./seed");
+  await autoSeed();
+
   await registerRoutes(httpServer, app);
 
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
