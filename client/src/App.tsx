@@ -13,6 +13,8 @@ import Contact from "@/pages/contact";
 import WhyUs from "@/pages/why-us";
 import Global from "@/pages/global";
 import { Chatbot } from "@/components/chatbot";
+import AdminLogin from "@/pages/admin/login";
+import AdminDashboard from "@/pages/admin/dashboard";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -43,13 +45,29 @@ function Router() {
   );
 }
 
+function AdminRouter() {
+  return (
+    <Switch>
+      <Route path="/admin" component={AdminLogin} />
+      <Route path="/admin/dashboard" component={AdminDashboard} />
+      <Route path="/admin/content" component={AdminDashboard} />
+      <Route path="/admin/blog" component={AdminDashboard} />
+      <Route path="/admin/settings" component={AdminDashboard} />
+      <Route path="/admin/contacts" component={AdminDashboard} />
+    </Switch>
+  );
+}
+
 function App() {
+  const [location] = useLocation();
+  const isAdmin = location.startsWith("/admin");
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
-        <Chatbot />
+        {isAdmin ? <AdminRouter /> : <Router />}
+        {!isAdmin && <Chatbot />}
       </TooltipProvider>
     </QueryClientProvider>
   );
