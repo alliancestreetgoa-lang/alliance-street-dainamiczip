@@ -1,8 +1,8 @@
-# Alliance Street Accounting - Business Website with CMS
+# Alliance Street Accounting Pvt Ltd - Business Website with CMS
 
 ## Overview
 
-This is a modern, professional business website for **Alliance Street Accounting**, a global accounting and outsourcing firm offering services up to Virtual CFO level. The site targets businesses in the US, UK, EU, UAE, Canada, and India with a premium corporate look and feel.
+This is a modern, professional business website for **Alliance Street Accounting Pvt Ltd**, a global accounting and outsourcing firm offering services up to Virtual CFO level. The site targets businesses in the US, UK, EU, UAE, Canada, and India with a premium corporate look and feel.
 
 The website consists of 7 main public pages: Home, About, Services, Why Us, Global Coverage, Blog, and Contact. It features a dark theme (#0B0B0B background) with red accent colors, responsive design, and Framer Motion animations.
 

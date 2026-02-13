@@ -47,7 +47,7 @@ export default function AdminLogin() {
           <CardTitle className="text-2xl font-bold text-white" data-testid="text-login-title">
             Admin Login
           </CardTitle>
-          <p className="text-white/50 text-sm">Alliance Street Accounting CMS</p>
+          <p className="text-white/50 text-sm">Alliance Street Accounting Pvt Ltd CMS</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-5">

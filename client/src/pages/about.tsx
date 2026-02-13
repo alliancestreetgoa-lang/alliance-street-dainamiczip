@@ -76,7 +76,7 @@ export default function About() {
             >
               <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-black">{mission.title || "Our Mission"}</motion.h2>
               <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed text-lg">
-                {mission.paragraph1 || "At Alliance Street Accounting, our mission is to empower businesses globally with the financial clarity and operational efficiency they need to scale. We believe that high-quality financial management should be accessible, transparent, and driven by expertise."}
+                {mission.paragraph1 || "At Alliance Street Accounting Pvt Ltd, our mission is to empower businesses globally with the financial clarity and operational efficiency they need to scale. We believe that high-quality financial management should be accessible, transparent, and driven by expertise."}
               </motion.p>
               <motion.p variants={fadeUp} className="text-gray-500 leading-relaxed text-lg">
                 {mission.paragraph2 || "We combine the cost advantages of global outsourcing with the strategic insight of a top-tier CFO, giving you the best of both worlds."}
