@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Plus Jakarta Sans', sans-serif;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  /* alliancestreet.ae Color Palette */
+  
+  /* Primary: Black - used for buttons and strong text */
+  --primary: 0 0% 0%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Background: Deep black with subtle warmth */
+  --background: 0 0% 2%;
+  --foreground: 0 0% 95%;
+
+  /* Cards: Clean white floating containers */
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 8%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 8%;
+
+  /* Accent: Alliance Street Brand Red */
+  --accent: 0 85% 50%;
+  --accent-foreground: 0 0% 100%;
+
+  /* Secondary: Soft warm gray */
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 10%;
+
+  /* Muted: Dark surface for dark bg sections */
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 60%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 18%;
+  --input: 0 0% 90%;
+  --ring: 0 85% 50%;
+
+  --radius: 1.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased text-foreground;
+    background: #0B0B0B;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.btn-dark {
+  @apply bg-black text-white rounded-full px-8 py-3 font-semibold;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-dark:hover {
+  transform: scale(1.05);
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-dark {
+  @apply border border-white/20 text-white rounded-full px-8 py-3 font-semibold;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline-dark:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card-float {
+  @apply bg-white text-black rounded-3xl shadow-2xl;
+}
