@@ -79,16 +79,8 @@ app.use((req, res, next) => {
   const { autoSeed } = await import("./seed");
   await autoSeed();
 
-  app.get("/google51c0c4017963296f.html", (_req, res) => {
-    const filePath = path.resolve(
-      process.env.NODE_ENV === "production" ? path.resolve(__dirname, "public") : path.resolve(import.meta.dirname, "..", "client", "public"),
-      "google51c0c4017963296f.html"
-    );
-    if (fs.existsSync(filePath)) {
-      res.type("text/html").sendFile(filePath);
-    } else {
-      res.status(404).send("Not found");
-    }
+  app.get(["/google51c0c4017963296f.html", "/admin/google51c0c4017963296f.html"], (_req, res) => {
+    res.type("text/html").send("google-site-verification: google51c0c4017963296f.html");
   });
 
   await registerRoutes(httpServer, app);
