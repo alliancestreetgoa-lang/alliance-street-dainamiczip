@@ -5,6 +5,8 @@ import { createServer } from "http";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import { pool } from "./db";
+import path from "path";
+import fs from "fs";
 
 const app = express();
 const httpServer = createServer(app);
@@ -76,6 +78,18 @@ app.use((req, res, next) => {
 (async () => {
   const { autoSeed } = await import("./seed");
   await autoSeed();
+
+  app.get("/google51c0c4017963296f.html", (_req, res) => {
+    const filePath = path.resolve(
+      process.env.NODE_ENV === "production" ? path.resolve(__dirname, "public") : path.resolve(import.meta.dirname, "..", "client", "public"),
+      "google51c0c4017963296f.html"
+    );
+    if (fs.existsSync(filePath)) {
+      res.type("text/html").sendFile(filePath);
+    } else {
+      res.status(404).send("Not found");
+    }
+  });
 
   await registerRoutes(httpServer, app);
 
